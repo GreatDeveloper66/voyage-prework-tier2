@@ -2,7 +2,7 @@
 
 git add .
 git commit
-git push origin $1
-git push heroku $1
-git push lab $1
+git push -u origin $1
+git push -u heroku $1
+git push -u lab $1
 git status

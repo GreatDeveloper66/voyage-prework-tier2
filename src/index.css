@@ -1,13 +1,19 @@
+/* line 12, /Users/adam/Desktop/My_Documents/Coding/Projects/voyage-prework-tier2/src/index.scss */
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  display: grid;
+  grid-template: auto/auto;
+  justify-items: center;
+  align-items: center;
+  margin: 2px;
+  padding: 2px;
+  height: 100%;
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 4px solid red; }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+/* line 18, /Users/adam/Desktop/My_Documents/Coding/Projects/voyage-prework-tier2/src/index.scss */
+.mainRow {
+  @includ displaygrid(1fr/1fr 1fr, start, center, 2px,2px,auto, 100%);
+  border: 3px solid blue; }
+
+/*# sourceMappingURL=index.css.map */

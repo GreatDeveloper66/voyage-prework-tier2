@@ -1,4 +1,3 @@
-/* line 12, /Users/adam/Desktop/My_Documents/Coding/Projects/voyage-prework-tier2/src/index.scss */
 body {
   display: grid;
   grid-template: auto/auto;
@@ -9,11 +8,41 @@ body {
   height: 100%;
   width: 100%;
   background-color: #FFFFFF;
-  border: 4px solid red; }
+  border: 4px solid red;
+}
 
-/* line 18, /Users/adam/Desktop/My_Documents/Coding/Projects/voyage-prework-tier2/src/index.scss */
 .mainRow {
-  @includ displaygrid(1fr/1fr 1fr, start, center, 2px,2px,auto, 100%);
-  border: 3px solid blue; }
+  display: grid;
+  grid-template: auto/repeat(2, 1fr);
+  justify-items: start;
+  align-items: center;
+  margin: 2px;
+  padding: 2px;
+  height: auto;
+  width: 100%;
+  border: 3px solid blue;
+}
 
-/*# sourceMappingURL=index.css.map */
+.iconTitle {
+  display: grid;
+  grid-template: 1;
+  justify-items: center;
+  align-items: center;
+  margin: 2px;
+  padding: 2px;
+  height: auto;
+  width: auto;
+  border: 3px solid green;
+}
+
+.topMenu {
+  display: grid;
+  grid-template: auto/repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  margin: 2px;
+  padding: 2px;
+  height: auto;
+  width: auto;
+  border: 3px solid yellow;
+}

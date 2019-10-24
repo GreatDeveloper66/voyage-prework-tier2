@@ -16,6 +16,16 @@ body {
 }
 
 .mainRow {
-  @includ displaygrid(1fr/1fr 1fr, start, center, 2px,2px,auto, 100%);
+  @include displaygrid(auto/repeat(2,1fr), start, center, 2px,2px,auto, 100%);
   border: 3px solid blue;
+}
+
+.iconTitle {
+	@include displaygrid(1fr/1fr);
+	border: 3px solid green;
+}
+
+.topMenu {
+  @include displaygrid(auto/repeat(4,1fr))
+	border: 3px solid yellow;
 }

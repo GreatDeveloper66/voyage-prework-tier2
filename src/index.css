@@ -46,3 +46,15 @@ body {
   width: auto;
   border: 3px solid yellow;
 }
+
+.cards {
+  display: grid;
+  grid-template: 1;
+  justify-items: center;
+  align-items: center;
+  margin: 3px;
+  padding: 3px;
+  height: 100px;
+  width: 100%;
+  border: 4px solid yellow;
+}

@@ -23,17 +23,26 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      name: "Walrus Man",
       data: []
     };
-
+  }
+  componentDidMount(){
+    fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCjVPlNgusY2WdI0-pw303Rt-rIf6YYAVw')
+      .then(response => response.json())
+      .then(data => {
+          this.setState({data: data});
+          window.alert(this.state.data.kind);
+        });
   }
   render(){
     return (
-      <div class = "mainRow">
-        <div class = "iconTitle">
-          Google Fonts
-        </div>
-      <div class = "topMenu">
+      <div class = "App">
+        <div class = "mainRow">
+          <div class = "iconTitle">
+            Google Fonts
+            </div>
+          <div class = "topMenu">
         <div class = "menuItem">
           catalog
         </div>
@@ -47,6 +56,11 @@ class App extends Component {
         about
         </div>
       </div>
+    </div>
+    <div class="cards" id="cards">
+     {this.state.name}
+     {this.state.data.kind}
+    </div>
     </div>
     );
   }

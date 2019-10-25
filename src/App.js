@@ -42,9 +42,23 @@ class App extends Component {
     <div className="cards" id="cards">
      {this.state.name}
     </div>
+    <Card text={"Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipusm."}/>
     </div>
     );
   }
+}
+class Card extends Component {
+  constructor(props){
+    super(props);
+  }
+  render() {
+    return(
+      <div className="card">
+        {this.props.text}
+      </div>
+    );
+  }
+
 }
 
 

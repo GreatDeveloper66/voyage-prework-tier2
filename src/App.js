@@ -1,23 +1,5 @@
-/*global window*/
-/*global document*/
-/*global Modernizr*/
-/*global SmoothScroll*/
-/*global console*/
-/*global $*/
-/*jshint esversion:6*/
-/*global event*/
-/*global requestAnimationFrame*/
-
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-/*
-function App() {
-  return (
-    <main/>
-  );
-}
-*/
 
 class App extends Component {
   constructor(props){
@@ -32,34 +14,33 @@ class App extends Component {
       .then(response => response.json())
       .then(data => {
           this.setState({data: data});
-          window.alert(this.state.data.kind);
+          console.log(this.state.data.items[0].family);
         });
   }
   render(){
     return (
-      <div class = "App">
-        <div class = "mainRow">
-          <div class = "iconTitle">
+      <div className = "App">
+        <div className = "mainRow">
+          <div className = "iconTitle">
             Google Fonts
             </div>
-          <div class = "topMenu">
-        <div class = "menuItem">
+          <div className = "topMenu">
+        <div className = "menuItem">
           catalog
         </div>
-        <div class = "menuItem">
+        <div className = "menuItem">
           features
         </div>
-        <div class = "menuItem">
+        <div className = "menuItem">
         articles
         </div>
-        <div class = "menuItem">
+        <div className = "menuItem">
         about
         </div>
       </div>
     </div>
-    <div class="cards" id="cards">
+    <div className="cards" id="cards">
      {this.state.name}
-     {this.state.data.kind}
     </div>
     </div>
     );

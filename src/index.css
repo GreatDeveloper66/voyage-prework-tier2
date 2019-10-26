@@ -76,18 +76,6 @@ body {
   border: 3px solid yellow;
 }
 
-.cards {
-  display: grid;
-  grid-template: 1;
-  justify-items: center;
-  align-items: center;
-  margin: 3px;
-  padding: 3px;
-  height: 100px;
-  width: 100%;
-  border: 4px solid yellow;
-}
-
 a {
   text-decoration: none;
   margin-right: 10px;
@@ -95,5 +83,9 @@ a {
 }
 
 .Featured, .Articles, .About {
-	display: none;
+  display: none;
+}
+
+h1 {
+  text-align: center;
 }

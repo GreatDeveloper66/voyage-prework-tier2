@@ -53,5 +53,8 @@ a {
 	text-decoration: none;
 	margin-right: 10px;
 	color: var(--linkColor);
+}
 
+.Catalog, .Featured, .Articles, .About {
+	display: none;
 }

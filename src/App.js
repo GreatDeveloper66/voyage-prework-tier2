@@ -49,14 +49,13 @@ class App extends Component {
             </div>
           </div>
         </div>
-    <div className="cards" id="cards">
-     {this.state.name}
-     <p>
-      hello
-     </p>
-    </div>
-    <Card text={"Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipusm."} />
-    </div>
+        <Catalog />
+        <Featured />
+        <Articles />
+        <About />
+
+      </div>
+
     );
   }
 }
@@ -75,6 +74,100 @@ class Card extends Component {
   }
 }
 
+class Catalog extends React.Component {
+  render(){
+    return(
+      <div className="Catalog">
+                            <h1>Catalog Section</h1>
+                            <p>"Lorem ipsum dolor sit amet,
+                              consectetur adipiscing elit,
+                              sed do eiusmod tempor incididunt ut
+                              labore et dolore magna aliqua. Ut enim
+                              ad minim veniam, quis nostrud exercitation
+                              ullamco laboris nisi ut aliquip ex ea commodo
+                              consequat. Duis aute irure dolor in reprehenderit
+                              in voluptate velit esse cillum dolore eu
+                              fugiat nulla pariatur. Excepteur sint occaecat
+                              cupidatat non proident, sunt in culpa qui
+                              officia deserunt mollit anim id est laborum."</p>
+                          </div>
 
+
+
+    );
+  }
+}
+
+class Featured extends React.Component {
+  render(){
+    return(
+      <div className="Featured">
+                            <h1>Featured Section</h1>
+                            <p>"Lorem ipsum dolor sit amet,
+                              consectetur adipiscing elit,
+                              sed do eiusmod tempor incididunt ut
+                              labore et dolore magna aliqua. Ut enim
+                              ad minim veniam, quis nostrud exercitation
+                              ullamco laboris nisi ut aliquip ex ea commodo
+                              consequat. Duis aute irure dolor in reprehenderit
+                              in voluptate velit esse cillum dolore eu
+                              fugiat nulla pariatur. Excepteur sint occaecat
+                              cupidatat non proident, sunt in culpa qui
+                              officia deserunt mollit anim id est laborum."</p>
+                          </div>
+
+
+
+    );
+  }
+}
+
+class Articles extends React.Component {
+  render(){
+    return(
+      <div className="Articles">
+                            <h1>Articles Section</h1>
+                            <p>"Lorem ipsum dolor sit amet,
+                              consectetur adipiscing elit,
+                              sed do eiusmod tempor incididunt ut
+                              labore et dolore magna aliqua. Ut enim
+                              ad minim veniam, quis nostrud exercitation
+                              ullamco laboris nisi ut aliquip ex ea commodo
+                              consequat. Duis aute irure dolor in reprehenderit
+                              in voluptate velit esse cillum dolore eu
+                              fugiat nulla pariatur. Excepteur sint occaecat
+                              cupidatat non proident, sunt in culpa qui
+                              officia deserunt mollit anim id est laborum."</p>
+                          </div>
+
+
+
+    );
+  }
+}
+
+class About extends React.Component {
+  render(){
+    return(
+      <div className="About">
+                            <h1>About Section</h1>
+                            <p>"Lorem ipsum dolor sit amet,
+                              consectetur adipiscing elit,
+                              sed do eiusmod tempor incididunt ut
+                              labore et dolore magna aliqua. Ut enim
+                              ad minim veniam, quis nostrud exercitation
+                              ullamco laboris nisi ut aliquip ex ea commodo
+                              consequat. Duis aute irure dolor in reprehenderit
+                              in voluptate velit esse cillum dolore eu
+                              fugiat nulla pariatur. Excepteur sint occaecat
+                              cupidatat non proident, sunt in culpa qui
+                              officia deserunt mollit anim id est laborum."</p>
+                          </div>
+
+
+
+    );
+  }
+}
 
 export default App;

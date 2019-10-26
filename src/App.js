@@ -84,8 +84,8 @@ class Catalog extends React.Component {
   render() {
     return (<div className="Catalog">
     <div class="underMenu">
-      <input type="search"></input>
-      <input type="text"></input>
+      <input type="search" placeholder="search fonts"></input>
+      <input type="text" placeholder="sample text"></input>
       <div class="instructions">
         Pick a font and choose a font size
       </div>

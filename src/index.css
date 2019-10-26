@@ -2,6 +2,16 @@
   --linkColor: #4169E1;
 }
 
+h1 {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  margin-right: 10px;
+  color: var(--linkColor);
+}
+
 body {
   display: grid;
   grid-template: auto/auto;
@@ -14,8 +24,7 @@ body {
   background-color: #FFFFFF;
   border: 4px solid red;
 }
-
-#root {
+body #root {
   display: grid;
   grid-template: 1;
   justify-items: center;
@@ -26,8 +35,7 @@ body {
   width: 100%;
   border: 3px solid purple;
 }
-
-.App {
+body #root .App {
   display: grid;
   grid-template: auto auto auto/auto;
   justify-items: center;
@@ -39,8 +47,7 @@ body {
   max-width: 900px;
   border: 3px solid orange;
 }
-
-.mainRow {
+body #root .App .mainRow {
   display: grid;
   grid-template: auto/1fr 5fr;
   justify-items: end;
@@ -51,8 +58,7 @@ body {
   width: 100%;
   border: 3px solid blue;
 }
-
-.iconTitle {
+body #root .App .mainRow .iconTitle {
   display: grid;
   grid-template: 1;
   justify-items: center;
@@ -63,8 +69,7 @@ body {
   width: auto;
   border: 3px solid green;
 }
-
-.topMenu {
+body #root .App .mainRow .topMenu {
   display: grid;
   grid-template: auto/repeat(4, 1fr);
   justify-items: center;
@@ -75,8 +80,7 @@ body {
   width: auto;
   border: 3px solid yellow;
 }
-
-.underMenu {
+body #root .App .Catalog .underMenu {
   display: grid;
   grid-template: auto/auto auto 1fr auto auto;
   justify-items: space-around;
@@ -88,21 +92,9 @@ body {
   background-color: grey;
   border: 3px solid blue;
 }
-
-a {
-  text-decoration: none;
-  margin-right: 10px;
-  color: var(--linkColor);
-}
-
-.Featured, .Articles, .About {
-  display: none;
-}
-
-h1 {
+body #root .App .Catalog .underMenu .instructions {
   text-align: center;
 }
-
-.instructions {
-	text-align: center;
+body #root .App .Featured, body #root .App .Articles, body #root .App .About {
+  display: none;
 }

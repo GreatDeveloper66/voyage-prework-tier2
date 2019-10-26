@@ -9,6 +9,10 @@
 	width: $width;
 }
 
+:root {
+	--linkColor: #4169E1;
+}
+
 body {
   @include displaygrid(auto/auto,center,center,2px,2px, 100%, 100%);
   background-color: #FFFFFF;
@@ -43,4 +47,11 @@ body {
 .cards {
 	@include displaygrid(1fr/1fr,center,center,3px,3px, 100px, 100%);
 	border: 4px solid yellow;
+}
+
+a {
+	text-decoration: none;
+	margin-right: 10px;
+	color: var(--linkColor);
+
 }

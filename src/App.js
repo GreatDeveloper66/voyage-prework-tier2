@@ -28,16 +28,24 @@ class App extends Component {
           </div>
           <div className = "topMenu">
             <div className = "menuItem">
-              catalog
+              <a href="#">
+                catalog
+              </a>
             </div>
             <div className = "menuItem">
-              features
+              <a href="#">
+                features
+              </a>
             </div>
             <div className = "menuItem">
-              articles
+              <a href="#">
+                articles
+              </a>
             </div>
             <div className = "menuItem">
-              about
+              <a href="#">
+                about
+              </a>
             </div>
           </div>
         </div>

@@ -93,3 +93,7 @@ a {
   margin-right: 10px;
   color: var(--linkColor);
 }
+
+.Featured, .Articles, .About {
+	display: none;
+}

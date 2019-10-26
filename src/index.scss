@@ -44,9 +44,11 @@ body {
   @include displaygrid(auto/repeat(4,1fr));
 	border: 3px solid yellow;
 }
-.cards {
-	@include displaygrid(1fr/1fr,center,center,3px,3px, 100px, 100%);
-	border: 4px solid yellow;
+
+.underMenu {
+	@include displaygrid(auto/auto auto 1fr auto auto, space-around,center,2px,2px,auto,100%);
+	background-color: grey;
+	border: 3px solid blue;
 }
 
 a {
@@ -55,8 +57,9 @@ a {
 	color: var(--linkColor);
 }
 
-
-
 .Featured, .Articles, .About {
 	display: none;
+}
+h1 {
+	text-align: center;
 }

@@ -76,6 +76,19 @@ body {
   border: 3px solid yellow;
 }
 
+.underMenu {
+  display: grid;
+  grid-template: auto/auto auto 1fr auto auto;
+  justify-items: space-around;
+  align-items: center;
+  margin: 2px;
+  padding: 2px;
+  height: auto;
+  width: 100%;
+  background-color: grey;
+  border: 3px solid blue;
+}
+
 a {
   text-decoration: none;
   margin-right: 10px;

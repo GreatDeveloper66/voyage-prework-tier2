@@ -83,6 +83,20 @@ class App extends Component {
 class Catalog extends React.Component {
   render() {
     return (<div className="Catalog">
+    <div class="underMenu">
+      <input type="search"></input>
+      <input type="text"></input>
+      <div class="instructions">
+        Pick a font and choose a font size
+      </div>
+      <select name="fontsizes">
+        <option value="5">5px</option>
+        <option value="10">10px</option>
+        <option value="20">20px</option>
+        <option value="30">30px</option>
+      </select>
+      <button>Reset</button>
+    </div>
       <h1>Catalog Section</h1>
       <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
     </div>);

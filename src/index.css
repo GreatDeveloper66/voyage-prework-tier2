@@ -101,6 +101,7 @@ body #root .App .Catalog .underMenu {
 
 body #root .App .Catalog .underMenu .instructions {
   text-align: center;
+  display: none;
 }
 
 body #root .App .Catalog .card {
@@ -117,7 +118,7 @@ body #root .App .Catalog .card {
 
 body #root .App .Catalog .card .topCardRow {
   display: grid;
-  grid-template: 1;
+  grid-template: 1fr/1fr 1fr;
   justify-items: space-between;
   align-items: center;
   margin: 2px;
@@ -141,4 +142,10 @@ body #root .App .Catalog .card .cardBody {
 
 body #root .App .Featured, body #root .App .Articles, body #root .App .About {
   display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  body #root .App .Catalog .underMenu .instructions {
+    display: grid;
+  }
 }

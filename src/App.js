@@ -115,7 +115,7 @@ class Catalog extends React.Component {
   }
   handleFontChange(event){
     event.preventDefault();
-    this.setState({fontsize: parseInt(event.target.value)});
+    this.setState({fontSize: parseInt(event.target.value)});
   }
   render() {
     return (<div className="Catalog">

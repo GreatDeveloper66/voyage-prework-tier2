@@ -51,13 +51,14 @@ body {
 					border: 3px solid blue;
 					.instructions {
 						text-align: center;
+						display:none;
 					}
 				}
 				.card {
 					@include displaygrid(50px 200px/250px, center, center, 2px, 2px, auto, auto);
 					border: 3px solid green;
 					.topCardRow {
-						@include displaygrid(1fr/1fr, space-between,center, 2px, 2px, 100%,100%);
+						@include displaygrid(1fr/1fr 1fr, space-between,center, 2px, 2px, 100%,100%);
 						border: 3px solid yellow;
 					}
 					.cardBody {
@@ -68,6 +69,22 @@ body {
 			}
 			.Featured, .Articles, .About {
 				display: none;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	body {
+		#root {
+			.App {
+				.Catalog {
+					.underMenu {
+						.instructions {
+							display: grid;
+						}
+					}
+				}
 			}
 		}
 	}

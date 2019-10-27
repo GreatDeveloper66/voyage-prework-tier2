@@ -94,7 +94,7 @@ class Catalog extends React.Component {
                     Arcu dictum varius duis at consectetur
                     lorem donec massa. Neque vitae tempus
                     quam pellentesque nec nam.`,
-      fontsize: 10
+      fontSize: 10
     };
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleFontChange = this.handleFontChange.bind(this);
@@ -125,7 +125,7 @@ class Catalog extends React.Component {
       <div className="instructions">
         Pick a font and choose a font size
       </div>
-      <select name="fontsizes" onChange={this.handleFontChange}>
+      <select name="fontSizes" onChange={this.handleFontChange}>
         <option value="10">10px</option>
         <option value="20">20px</option>
         <option value="30">30px</option>
@@ -134,9 +134,31 @@ class Catalog extends React.Component {
       <button>Reset</button>
     </div>
       <h1>Catalog Section</h1>
-      <div className="card" style={{fontSize: this.state.fontsize}}>{this.state.sampleText}</div>
+      <Card fontSize={this.state.fontSize} sampleText={this.state.sampleText} fontFamily="Roboto" />
+      /*
+      <div className="card" style={{fontSize: this.state.fontSize}}>{this.state.sampleText}</div>
+      */
       <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
     </div>);
+  }
+}
+
+class Card extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return(
+      <div className="card" style={{fontSize: this.props.fontSize}}>
+        <div class="topCardRow">
+          {this.props.fontFamily}
+          <p>+</p>
+        </div>
+        <div class="cardBody">
+          {this.props.sampleText}
+        </div>
+      </div>
+    );
   }
 }
 

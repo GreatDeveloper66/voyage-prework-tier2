@@ -7,7 +7,17 @@ class App extends Component {
     this.state = {
       name: "Walrus Man",
       data: [],
-      fontFamilies: ['Family1','Family2','Family3','Family4','Family 5','Family 6','Family 7','Family8','Family9']
+      fontFamilies: [
+        'Family1',
+        'Family2',
+        'Family3',
+        'Family4',
+        'Family 5',
+        'Family 6',
+        'Family 7',
+        'Family8',
+        'Family9'
+      ]
     };
   }
 
@@ -19,8 +29,7 @@ class App extends Component {
     const features = document.getElementById('features');
     const articles = document.getElementById('articles');
     const about = document.getElementById('about');
-    const items = [".Catalog", ".Featured", ".Articles", ".About"]
-      .map(elem => document.querySelector(elem));
+    const items = [".Catalog", ".Featured", ".Articles", ".About"].map(elem => document.querySelector(elem));
     const menuitems = Array.from(document.querySelectorAll('a'));
     function reveal(i) {
       items.forEach(elem => elem.style.display = "none");
@@ -72,7 +81,7 @@ class App extends Component {
           </div>
         </div>
       </div>
-      <Catalog fontFamilies = {this.state.fontFamilies}/>
+      <Catalog fontFamilies={this.state.fontFamilies}/>
       <Featured/>
       <Articles/>
       <About/>
@@ -82,7 +91,7 @@ class App extends Component {
 }
 
 class Catalog extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       sampleText: `Lorem ipsum dolor sit amet,
@@ -100,9 +109,10 @@ class Catalog extends React.Component {
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleFontChange = this.handleFontChange.bind(this);
   }
-  handleTextChange(event){
+  handleTextChange(event) {
     event.preventDefault();
-    const newText = event.target.value === "" ? `Lorem ipsum dolor sit amet,
+    const newText = event.target.value === ""
+      ? `Lorem ipsum dolor sit amet,
                   consectetur adipiscing elit,
                   sed do eiusmod tempor incididunt
                   ut labore et dolore magna aliqua.
@@ -111,56 +121,61 @@ class Catalog extends React.Component {
                   eu scelerisque felis imperdiet proin.
                   Arcu dictum varius duis at consectetur
                   lorem donec massa. Neque vitae tempus
-                  quam pellentesque nec nam.` : event.target.value;
+                  quam pellentesque nec nam.`
+      : event.target.value;
     this.setState({sampleText: newText});
   }
-  handleFontChange(event){
+  handleFontChange(event) {
     event.preventDefault();
-    this.setState({fontSize: parseInt(event.target.value)});
+    this.setState({
+      fontSize: parseInt(event.target.value)
+    });
   }
   render() {
     return (<div className="Catalog">
-    <div className="underMenu">
-      <input type="search" placeholder="search fonts"></input>
-      <input type="text" placeholder="sample text" onChange={this.handleTextChange}></input>
-      <div className="instructions">
-        Pick a font and choose a font size
+      <div className="underMenu">
+        <input type="search" placeholder="search fonts"></input>
+        <input type="text" placeholder="sample text" onChange={this.handleTextChange}></input>
+        <div className="instructions">
+          Pick a font and choose a font size
+        </div>
+        <select name="fontSizes" onChange={this.handleFontChange}>
+          <option value="10">10px</option>
+          <option value="20">20px</option>
+          <option value="30">30px</option>
+          <option value="40">40px</option>
+        </select>
+        <button>Reset</button>
       </div>
-      <select name="fontSizes" onChange={this.handleFontChange}>
-        <option value="10">10px</option>
-        <option value="20">20px</option>
-        <option value="30">30px</option>
-        <option value="40">40px</option>
-      </select>
-      <button>Reset</button>
-    </div>
       <h1>Catalog Section</h1>
-      <Card fontSize={this.state.fontSize} sampleText={this.state.sampleText} fontFamily={this.props.fontFamilies[0]}/>
-      /*
-      <div className="card" style={{fontSize: this.state.fontSize}}>{this.state.sampleText}</div>
-      */
+      {renderCard(this.props.fontFamilies[0],this.state.fontSize,this.state.sampleText)}
+    
       <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
     </div>);
   }
 }
 
 class Card extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
-  render(){
-    return(
-      <div className="card" style={{fontSize: this.props.fontSize}}>
-        <div class="topCardRow">
-          {this.props.fontFamily}
-          <p>+</p>
-        </div>
-        <div class="cardBody">
-          {this.props.sampleText}
-        </div>
+  render() {
+    return (<div className="card" style={{
+        fontSize: this.props.fontSize
+      }}>
+      <div class="topCardRow">
+        {this.props.fontFamily}
+        <p>+</p>
       </div>
-    );
+      <div class="cardBody">
+        {this.props.sampleText}
+      </div>
+    </div>);
   }
+}
+
+function renderCard(fontFamily, fontSize, sampleText) {
+  return (<Card fontSize={fontSize} sampleText={sampleText} fontFamily={fontFamily}/>);
 }
 
 class Featured extends React.Component {

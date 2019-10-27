@@ -6,7 +6,8 @@ class App extends Component {
     super(props);
     this.state = {
       name: "Walrus Man",
-      data: []
+      data: [],
+      fontFamilies: ['Family1','Family2','Family3','Family4','Family 5','Family 6','Family 7','Family8','Family9']
     };
   }
 
@@ -71,7 +72,7 @@ class App extends Component {
           </div>
         </div>
       </div>
-      <Catalog/>
+      <Catalog fontFamilies = {this.state.fontFamilies}/>
       <Featured/>
       <Articles/>
       <About/>
@@ -121,7 +122,7 @@ class Catalog extends React.Component {
     return (<div className="Catalog">
     <div className="underMenu">
       <input type="search" placeholder="search fonts"></input>
-      <input type="text" placeholder="sample text" onChange={this.handleTextChange} ></input>
+      <input type="text" placeholder="sample text" onChange={this.handleTextChange}></input>
       <div className="instructions">
         Pick a font and choose a font size
       </div>
@@ -134,7 +135,7 @@ class Catalog extends React.Component {
       <button>Reset</button>
     </div>
       <h1>Catalog Section</h1>
-      <Card fontSize={this.state.fontSize} sampleText={this.state.sampleText} fontFamily="Roboto" />
+      <Card fontSize={this.state.fontSize} sampleText={this.state.sampleText} fontFamily={this.props.fontFamilies[0]}/>
       /*
       <div className="card" style={{fontSize: this.state.fontSize}}>{this.state.sampleText}</div>
       */

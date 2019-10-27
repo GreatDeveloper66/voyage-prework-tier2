@@ -81,15 +81,32 @@ class App extends Component {
 }
 
 class Catalog extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      sampleText: "",
+      fontsize: 5
+    };
+    this.handleTextChange = this.handleTextChange.bind(this);
+    this.handleFontChange = this.handleFontChange.bind(this);
+  }
+  handleTextChange(event){
+    event.preventDefault();
+    this.setState({sampleText: event.target.value});
+  }
+  handleFontChange(event){
+    event.preventDefault();
+    this.setState({fontsize: event.target.value});
+  }
   render() {
     return (<div className="Catalog">
     <div class="underMenu">
       <input type="search" placeholder="search fonts"></input>
-      <input type="text" placeholder="sample text"></input>
+      <input type="text" placeholder="sample text" onChange={this.handleTextChange} value={this.state.sampleText}></input>
       <div class="instructions">
         Pick a font and choose a font size
       </div>
-      <select name="fontsizes">
+      <select name="fontsizes" onChange={this.handleFontChange}>
         <option value="5">5px</option>
         <option value="10">10px</option>
         <option value="20">20px</option>
@@ -98,6 +115,7 @@ class Catalog extends React.Component {
       <button>Reset</button>
     </div>
       <h1>Catalog Section</h1>
+      <div class="card" style={{fontSize: this.state.fontsize}}>{this.state.sampleText}</div>
       <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
     </div>);
   }

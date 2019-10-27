@@ -84,7 +84,16 @@ class Catalog extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      sampleText: "",
+      sampleText: `Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua.
+                    Viverra nam libero justo laoreet
+                    sit amet cursus sit. In metus vulputate
+                    eu scelerisque felis imperdiet proin.
+                    Arcu dictum varius duis at consectetur
+                    lorem donec massa. Neque vitae tempus
+                    quam pellentesque nec nam.`,
       fontsize: 10
     };
     this.handleTextChange = this.handleTextChange.bind(this);
@@ -92,7 +101,17 @@ class Catalog extends React.Component {
   }
   handleTextChange(event){
     event.preventDefault();
-    this.setState({sampleText: event.target.value});
+    const newText = event.target.value === "" ? `Lorem ipsum dolor sit amet,
+                  consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt
+                  ut labore et dolore magna aliqua.
+                  Viverra nam libero justo laoreet
+                  sit amet cursus sit. In metus vulputate
+                  eu scelerisque felis imperdiet proin.
+                  Arcu dictum varius duis at consectetur
+                  lorem donec massa. Neque vitae tempus
+                  quam pellentesque nec nam.` : event.target.value;
+    this.setState({sampleText: newText});
   }
   handleFontChange(event){
     event.preventDefault();
@@ -102,7 +121,7 @@ class Catalog extends React.Component {
     return (<div className="Catalog">
     <div className="underMenu">
       <input type="search" placeholder="search fonts"></input>
-      <input type="text" placeholder="sample text" onChange={this.handleTextChange} value={this.state.sampleText}></input>
+      <input type="text" placeholder="sample text" onChange={this.handleTextChange} ></input>
       <div className="instructions">
         Pick a font and choose a font size
       </div>

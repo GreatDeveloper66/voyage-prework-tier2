@@ -104,7 +104,8 @@ class Catalog extends React.Component {
                     Arcu dictum varius duis at consectetur
                     lorem donec massa. Neque vitae tempus
                     quam pellentesque nec nam.`,
-      fontSize: 10
+      fontSize: 10,
+      fontFamilies: ["Family1","Family2","Family3","Family5","Family6","Family7","Family8","Family9"]
     };
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleFontChange = this.handleFontChange.bind(this);
@@ -148,12 +149,29 @@ class Catalog extends React.Component {
         <button>Reset</button>
       </div>
       <h1>Catalog Section</h1>
-      {renderCard(this.props.fontFamilies[0],this.state.fontSize,this.state.sampleText)}
-    
+
+
+      <CardGrid fontFamilies={this.state.fontFamilies} fontSize={this.state.fontSize} sampleText={this.state.sampleText}/>
+
+
       <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
     </div>);
   }
 }
+
+const CardGrid = (props) => {
+  const Families = props.fontFamilies;
+  const Size = props.fontSize;
+  const Text = props.sampleText;
+  const Cards = Families.map((fam) =>
+   // Correct! Key should be specified inside the array.
+   <Card fontSize={Size} fontFamily={fam} sampleText={Text} />
+
+ );
+ return (
+     Cards
+ );
+};
 
 class Card extends React.Component {
   constructor(props) {
@@ -175,7 +193,9 @@ class Card extends React.Component {
 }
 
 function renderCard(fontFamily, fontSize, sampleText) {
-  return (<Card fontSize={fontSize} sampleText={sampleText} fontFamily={fontFamily}/>);
+  let card = <Card fontSize={fontSize} sampleText={sampleText} fontFamily={fontFamily}/>;
+  card += <Card fontSize={fontSize} sampleText={sampleText} fontFamily={fontFamily}/>;
+  return (card);
 }
 
 class Featured extends React.Component {

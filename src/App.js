@@ -30,7 +30,6 @@ class App extends Component {
     const articles = document.getElementById('articles');
     const about = document.getElementById('about');
     const items = [".Catalog", ".Featured", ".Articles", ".About"].map(elem => document.querySelector(elem));
-    const menuitems = Array.from(document.querySelectorAll('a'));
     function reveal(i) {
       items.forEach(elem => elem.style.display = "none");
       items[i].style.display = "grid";
@@ -50,6 +49,7 @@ class App extends Component {
     });
 
     const fontList = this.state.fontFamilies.map(elem => elem).join(', ');
+    console.log(fontList);
 
     let WebFont = require('webfontloader');
 
@@ -70,24 +70,24 @@ class App extends Component {
         </div>
         <div className="topMenu">
           <div className="menuItem">
-            <a href="#" id="catalog">
+            <button id="catalog">
               catalog
-            </a>
+            </button>
           </div>
           <div className="menuItem">
-            <a href="#" id="features">
+            <button id="features">
               features
-            </a>
+            </button>
           </div>
           <div className="menuItem">
-            <a href="#" id="articles">
+            <button id="articles">
               articles
-            </a>
+            </button>
           </div>
           <div className="menuItem">
-            <a href="#" id="about">
+            <button id="about">
               about
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -169,7 +169,7 @@ class Catalog extends React.Component {
       </div>
       <h1>Catalog Section</h1>
 
-      <div class="cardGrid">
+      <div className="cardGrid">
         <CardGrid fontFamilies={this.state.fontFamilies} fontSize={this.state.fontSize} sampleText={this.state.sampleText}/>
       </div>
 
@@ -182,25 +182,23 @@ const CardGrid = (props) => {
   const Families = props.fontFamilies;
   const Size = props.fontSize;
   const Text = props.sampleText;
-  const Cards = Families.map((fam) =>
+  const Cards = Families.map((fam,index) =>
   // Correct! Key should be specified inside the array.
-  <Card fontSize={Size} fontFamily={fam} sampleText={Text}/>);
+  <Card fontSize={Size} fontFamily={fam} sampleText={Text} key={index}/>);
   return (Cards);
 };
 
 class Card extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+
   render() {
     return (<div className="card" style={{
         fontSize: this.props.fontSize
       }}>
-      <div class="topCardRow">
+      <div className="topCardRow">
         {this.props.fontFamily}
         <p>+</p>
       </div>
-      <div class="cardBody">
+      <div className="cardBody">
         {this.props.sampleText}
       </div>
     </div>);

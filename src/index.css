@@ -22,7 +22,6 @@ body {
   height: 100%;
   width: 100%;
   background-color: #FFFFFF;
-  border: 4px solid red;
 }
 
 body #root {
@@ -34,7 +33,6 @@ body #root {
   padding: 2px;
   height: 100%;
   width: 100%;
-  border: 3px solid purple;
 }
 
 body #root .App {
@@ -47,7 +45,6 @@ body #root .App {
   height: auto;
   width: 90%;
   max-width: 900px;
-  border: 3px solid orange;
 }
 
 body #root .App .mainRow {
@@ -59,7 +56,6 @@ body #root .App .mainRow {
   padding: 2px;
   height: auto;
   width: 100%;
-  border: 3px solid blue;
 }
 
 body #root .App .mainRow .iconTitle {
@@ -71,7 +67,6 @@ body #root .App .mainRow .iconTitle {
   padding: 2px;
   height: auto;
   width: auto;
-  border: 3px solid green;
 }
 
 body #root .App .mainRow .topMenu {
@@ -83,7 +78,17 @@ body #root .App .mainRow .topMenu {
   padding: 2px;
   height: auto;
   width: auto;
-  border: 3px solid yellow;
+}
+
+body #root .App .Catalog {
+  display: grid;
+  grid-template: auto auto auto/1fr;
+  justify-items: center;
+  align-items: center;
+  margin: 2px;
+  padding: 2px auto;
+  height: 100%;
+  width: auto;
 }
 
 body #root .App .Catalog .underMenu {
@@ -96,7 +101,6 @@ body #root .App .Catalog .underMenu {
   height: auto;
   width: 100%;
   background-color: grey;
-  border: 3px solid blue;
 }
 
 body #root .App .Catalog .underMenu .instructions {
@@ -104,19 +108,25 @@ body #root .App .Catalog .underMenu .instructions {
   display: none;
 }
 
-body #root .App .Catalog .card {
+body #root .App .Catalog .cardGrid {
   display: grid;
-  grid-template: 50px 200px/250px;
+  width: 100%;
+  border: 3px solid blue;
+}
+
+body #root .App .Catalog .cardGrid .card {
+  display: grid;
+  grid-template: 50px 1fr/1fr;
   justify-items: center;
   align-items: center;
   margin: 2px;
   padding: 2px;
-  height: auto;
-  width: auto;
-  border: 3px solid green;
+  height: 250px;
+  width: 250px;
+  border: 3px solid red;
 }
 
-body #root .App .Catalog .card .topCardRow {
+body #root .App .Catalog .cardGrid .card .topCardRow {
   display: grid;
   grid-template: 1fr/1fr 1fr;
   justify-items: space-between;
@@ -125,10 +135,9 @@ body #root .App .Catalog .card .topCardRow {
   padding: 2px;
   height: 100%;
   width: 100%;
-  border: 3px solid yellow;
 }
 
-body #root .App .Catalog .card .cardBody {
+body #root .App .Catalog .cardGrid .card .cardBody {
   display: grid;
   grid-template: 1;
   justify-items: center;
@@ -137,7 +146,6 @@ body #root .App .Catalog .card .cardBody {
   padding: 2px;
   height: 100%;
   width: 100%;
-  border: 3px solid red;
 }
 
 body #root .App .Featured, body #root .App .Articles, body #root .App .About {

@@ -8,15 +8,15 @@ class App extends Component {
       name: "Walrus Man",
       data: [],
       fontFamilies: [
-        'Family1',
-        'Family2',
-        'Family3',
-        'Family4',
-        'Family 5',
-        'Family 6',
-        'Family 7',
-        'Family8',
-        'Family9'
+        'Roboto',
+        'Open Sans',
+        'Lato',
+        'Stoke',
+        'Poppins',
+        'PT Serif',
+        'Muli',
+        'Lora',
+        'Nunito'
       ]
     };
   }
@@ -47,6 +47,16 @@ class App extends Component {
     });
     about.addEventListener("click", function() {
       reveal(3);
+    });
+
+    const fontList = this.state.fontFamilies.map(elem => elem).join(', ');
+
+    let WebFont = require('webfontloader');
+
+    WebFont.load({
+      google: {
+        families: [fontList]
+      }
     });
 
   }
@@ -105,7 +115,16 @@ class Catalog extends React.Component {
                     lorem donec massa. Neque vitae tempus
                     quam pellentesque nec nam.`,
       fontSize: 10,
-      fontFamilies: ["Family1","Family2","Family3","Family5","Family6","Family7","Family8","Family9"]
+      fontFamilies: [
+        "Family1",
+        "Family2",
+        "Family3",
+        "Family5",
+        "Family6",
+        "Family7",
+        "Family8",
+        "Family9"
+      ]
     };
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleFontChange = this.handleFontChange.bind(this);
@@ -150,9 +169,9 @@ class Catalog extends React.Component {
       </div>
       <h1>Catalog Section</h1>
 
-
-      <CardGrid fontFamilies={this.state.fontFamilies} fontSize={this.state.fontSize} sampleText={this.state.sampleText}/>
-
+      <div class="cardGrid">
+        <CardGrid fontFamilies={this.state.fontFamilies} fontSize={this.state.fontSize} sampleText={this.state.sampleText}/>
+      </div>
 
       <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
     </div>);
@@ -164,13 +183,9 @@ const CardGrid = (props) => {
   const Size = props.fontSize;
   const Text = props.sampleText;
   const Cards = Families.map((fam) =>
-   // Correct! Key should be specified inside the array.
-   <Card fontSize={Size} fontFamily={fam} sampleText={Text} />
-
- );
- return (
-     Cards
- );
+  // Correct! Key should be specified inside the array.
+  <Card fontSize={Size} fontFamily={fam} sampleText={Text}/>);
+  return (Cards);
 };
 
 class Card extends React.Component {
@@ -190,12 +205,6 @@ class Card extends React.Component {
       </div>
     </div>);
   }
-}
-
-function renderCard(fontFamily, fontSize, sampleText) {
-  let card = <Card fontSize={fontSize} sampleText={sampleText} fontFamily={fontFamily}/>;
-  card += <Card fontSize={fontSize} sampleText={sampleText} fontFamily={fontFamily}/>;
-  return (card);
 }
 
 class Featured extends React.Component {

@@ -116,14 +116,14 @@ class Catalog extends React.Component {
                     quam pellentesque nec nam.`,
       fontSize: 10,
       fontFamilies: [
-        "Family1",
-        "Family2",
-        "Family3",
-        "Family5",
-        "Family6",
-        "Family7",
-        "Family8",
-        "Family9"
+        "Arial",
+        "Helvetica",
+        "Times",
+        "Palatino",
+        "Garammond",
+        "Bookman",
+        "Courier",
+        "Avant Garde"
       ]
     };
     this.handleTextChange = this.handleTextChange.bind(this);
@@ -192,7 +192,8 @@ class Card extends React.Component {
 
   render() {
     return (<div className="card" style={{
-        fontSize: this.props.fontSize
+        fontSize: this.props.fontSize,
+        fontFamily: this.props.fontFamily
       }}>
       <div className="topCardRow">
         {this.props.fontFamily}

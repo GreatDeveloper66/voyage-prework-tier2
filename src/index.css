@@ -2,6 +2,10 @@
   --linkColor: #4169E1;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 h1 {
   text-align: center;
 }

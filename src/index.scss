@@ -8,6 +8,9 @@
 	height: $height;
 	width: $width;
 }
+html {
+	scroll-behavior: smooth;
+}
 
 :root {
 	--linkColor: #4169E1;
@@ -22,6 +25,8 @@ a {
 	margin-right: 10px;
 	color: var(--linkColor);
 }
+
+
 
 body {
 	@include displaygrid(auto/auto,center,center,2px,2px, 100%, 100%);

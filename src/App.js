@@ -8,14 +8,14 @@ class App extends Component {
       name: "Walrus Man",
       data: [],
       fontFamilies: [
-        "Arial",
-        "Helvetica",
-        "Times",
-        "Palatino",
-        "Garammond",
-        "Bookman",
-        "Courier",
-        "Avant Garde"
+        "Roboto",
+        "Jomolhari",
+        "Staatliches",
+        "Open Sans",
+        "Lato",
+        "Big Shoulders Text",
+        "Montserrat",
+        "Roboto Condensed"
       ]
     };
   }
@@ -48,23 +48,13 @@ class App extends Component {
     });
 
     const fontList = this.state.fontFamilies.map(elem => elem).join(', ');
-    console.log(fontList);
-/*
-    let WebFont = require('webfontloader');
-
-    WebFont.load({
-      google: {
-        families: [fontList]
-      }
-    });
-    console.log(WebFont);
-    */
 
   }
 
   render() {
 
     return (<div className="App">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Jomolhari|Staatliches|Open+Sans|Lato|Big+Shoulders+Text|Montserrat|Roboto+Condenseddisplay=swap" rel="stylesheet" />
       <div className="mainRow">
         <div className="iconTitle">
           Google Fonts

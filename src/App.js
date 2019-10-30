@@ -47,15 +47,16 @@ class App extends Component {
       reveal(3);
     });
 
-    const fontList = this.state.fontFamilies.map(elem => elem).join(', ');
-
   }
 
   render() {
 
     return (<div className="App">
+    {/*
     <link href="https://fonts.googleapis.com/css?family=Roboto|Jomolhari|Staatliches|Open+Sans|Lato|Big+Shoulders+Text|Montserrat|Roboto+Condenseddisplay=swap" rel="stylesheet" />
-      <div className="mainRow">
+*/}
+    <Link fontFamilies={this.state.fontFamilies} />
+    <div className="mainRow">
         <div className="iconTitle">
           Google Fonts
         </div>
@@ -159,6 +160,14 @@ class Catalog extends React.Component {
     </div>);
   }
 }
+
+const Link = (props) => {
+  const fontArr = props.fontFamilies.map(elem => elem.replace(/ /g,"+"));
+  const fontStr = `https://fonts.googleapis.com/css?family=${fontArr.join('|')}$display=swap`;
+  console.log(<link href={fontStr} rel="stylesheet" />);
+  return(<link href={fontStr} rel="stylesheet" />);
+
+};
 
 const CardGrid = (props) => {
   const Families = props.fontFamilies;

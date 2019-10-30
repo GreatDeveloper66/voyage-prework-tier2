@@ -175,6 +175,10 @@ body button#slider {
   right: 20px;
 }
 
+body button#slider:hover {
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 768px) {
   body #root .App .Catalog .underMenu .instructions {
     display: grid;

@@ -8,15 +8,14 @@ class App extends Component {
       name: "Walrus Man",
       data: [],
       fontFamilies: [
-        'Roboto',
-        'Open Sans',
-        'Lato',
-        'Stoke',
-        'Poppins',
-        'PT Serif',
-        'Muli',
-        'Lora',
-        'Nunito'
+        "Arial",
+        "Helvetica",
+        "Times",
+        "Palatino",
+        "Garammond",
+        "Bookman",
+        "Courier",
+        "Avant Garde"
       ]
     };
   }
@@ -50,7 +49,7 @@ class App extends Component {
 
     const fontList = this.state.fontFamilies.map(elem => elem).join(', ');
     console.log(fontList);
-
+/*
     let WebFont = require('webfontloader');
 
     WebFont.load({
@@ -58,6 +57,8 @@ class App extends Component {
         families: [fontList]
       }
     });
+    console.log(WebFont);
+    */
 
   }
 
@@ -114,17 +115,8 @@ class Catalog extends React.Component {
                     Arcu dictum varius duis at consectetur
                     lorem donec massa. Neque vitae tempus
                     quam pellentesque nec nam.`,
-      fontSize: 10,
-      fontFamilies: [
-        "Arial",
-        "Helvetica",
-        "Times",
-        "Palatino",
-        "Garammond",
-        "Bookman",
-        "Courier",
-        "Avant Garde"
-      ]
+      fontSize: 10
+
     };
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleFontChange = this.handleFontChange.bind(this);
@@ -170,7 +162,7 @@ class Catalog extends React.Component {
       <h1>Catalog Section</h1>
 
       <div className="cardGrid">
-        <CardGrid fontFamilies={this.state.fontFamilies} fontSize={this.state.fontSize} sampleText={this.state.sampleText}/>
+        <CardGrid fontFamilies={this.props.fontFamilies} fontSize={this.state.fontSize} sampleText={this.state.sampleText}/>
       </div>
 
       <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>

@@ -37,7 +37,7 @@ body #root {
 
 body #root .App {
   display: grid;
-  grid-template: auto auto auto/auto;
+  grid-template: auto auto auto auto/auto;
   justify-items: center;
   align-items: center;
   margin: 2px;
@@ -148,8 +148,31 @@ body #root .App .Catalog .cardGrid .card .cardBody {
   width: 100%;
 }
 
-body #root .App .Featured, body #root .App .Articles, body #root .App .About {
+body #root .App .About,
+body #root .App .Articles,
+body #root .App .Featured {
   display: none;
+}
+
+body #root .App .footer {
+  display: grid;
+  grid-template: 1;
+  justify-items: center;
+  align-items: center;
+  margin: 2px;
+  padding: 2px;
+  height: auto;
+  width: 100%;
+}
+
+body button#slider {
+  position: fixed;
+  width: 39px;
+  height: 39px;
+  background: url("top.png") no-repeat center;
+  background-size: contain;
+  bottom: 80px;
+  right: 20px;
 }
 
 @media only screen and (min-width: 768px) {

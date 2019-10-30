@@ -12,64 +12,95 @@
 :root {
 	--linkColor: #4169E1;
 }
+
 h1 {
 	text-align: center;
 }
+
 a {
 	text-decoration: none;
 	margin-right: 10px;
 	color: var(--linkColor);
 }
+
 body {
-  @include displaygrid(auto/auto,center,center,2px,2px, 100%, 100%);
-  background-color: #FFFFFF;
+	@include displaygrid(auto/auto,center,center,2px,2px, 100%, 100%);
+	background-color: #FFFFFF;
+
 	#root {
 		@include displaygrid(1fr/1fr,center,center,2px,2px,100%,100%);
+
 		.App {
-			@include displaygrid(auto auto auto/auto, center,center,2px,2px, auto, 90%);
+			@include displaygrid(auto auto auto auto/auto, center,center,2px,2px, auto, 90%);
 			max-width: 900px;
+
 			.mainRow {
-			  @include displaygrid(auto/1fr 5fr, end, center, 2px,2px,auto, 100%);
+				@include displaygrid(auto/1fr 5fr, end, center, 2px,2px,auto, 100%);
+
 				.iconTitle {
 					@include displaygrid(1fr/1fr);
 				}
+
 				.topMenu {
-				  @include displaygrid(auto/repeat(4,1fr));
+					@include displaygrid(auto/repeat(4,1fr));
 				}
 			}
+
 			.Catalog {
 				@include displaygrid(auto auto auto/1fr, center, center, 2px, 2px auto, 100%);
-			  .underMenu {
+
+				.underMenu {
 					@include displaygrid(auto/auto auto 1fr auto auto, space-around,center,2px,2px,auto,100%);
 					background-color: grey;
+
 					.instructions {
 						text-align: center;
-						display:none;
+						display: none;
 					}
 				}
-				.cardGrid{
+
+				.cardGrid {
 					display: grid;
 					width: 100%;
 					border: 3px solid blue;
+
 					.card {
 						@include displaygrid(50px 1fr/1fr, center, center, 2px, 2px, 250px, 250px);
 						border: 3px solid red;
+
 						.topCardRow {
 							@include displaygrid(1fr/1fr 1fr, space-between,center, 2px, 2px, 100%,100%);
 						}
+
 						.cardBody {
 							@include displaygrid(1fr/1fr, center, center, 2px, 2px, 100%, 100%);
 						}
 					}
 				}
 			}
-			.Featured, .Articles, .About {
+
+			.About,
+			.Articles,
+			.Featured {
 				display: none;
+			}
+
+			.footer {
+				@include displaygrid(1fr/1fr,center,center,2px,2px,auto,100%);
 			}
 		}
 	}
-}
 
+	button#slider {
+		position: fixed;
+		width: 39px;
+		height: 39px;
+		background: url("/top.png") no-repeat center;
+		background-size: contain;
+		bottom: 80px;
+		right: 20px;
+	}
+}
 @media only screen and (min-width: 768px) {
 	body {
 		#root {

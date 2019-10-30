@@ -157,7 +157,7 @@ class Catalog extends React.Component {
   handleFamilyChange(event) {
     event.preventDefault();
     const str = event.target.value;
-    let RegExpression = new RegExp("^" + str);
+    let RegExpression = str === "" ? null : new RegExp("^" + str);
     this.setState({filter: RegExpression});
   }
 

@@ -152,10 +152,10 @@ class Catalog extends React.Component {
         <div className="instructions">
           Pick a font and choose a font size
         </div>
-        <select name="fontSizes" onChange={this.handleFontChange}>
+        <select name="fontSizes" onChange={this.handleFontChange} value={15}>
           <option value="5">5px</option>
           <option value="10">10px</option>
-          <option value="15" selected>15px</option>
+          <option value="15">15px</option>
           <option value="20">20px</option>
           <option value="25">25px</option>
         </select>
@@ -176,7 +176,6 @@ const Link = (props) => {
   const fontArr = props.fontFamilies;
   const fontStr = `https://fonts.googleapis.com/css?family=${fontArr.join('|')}$display=swap`;
   return (<link href={fontStr} rel="stylesheet"/>);
-
 };
 
 const fontFamiliesFiltered = (fontFamilies, regExp) => {
@@ -491,7 +490,7 @@ class About extends React.Component {
       <p>
         Google fonts is an excellent resources for web designers and developers.
         Over 96 open source fonts are made available at the
-         <a href="https://fonts.google.com" target="_blank" rel="noopner noreferrer"> Google Fonts Site</a>
+         <a href="https://fonts.google.com" target="_blank" rel="noopener noreferrer"> Google Fonts Site</a>
         These fonts are contributions from highly skilled designers from around then
         world. Google offers all the fonts in the catalog are free and open source.
       </p>

@@ -16,6 +16,30 @@ a {
   color: var(--linkColor);
 }
 
+button {
+  display: grid;
+  grid-template: 1;
+  justify-items: center;
+  align-items: center;
+  margin: 3px;
+  padding: 3px;
+  height: auto;
+  width: 100%;
+  font-family: "'Jomolhari','sans-serif'";
+  font-size: 15px;
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+  box-shadow: 3px 3px darkgrey;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 body {
   display: grid;
   grid-template: auto/auto;
@@ -54,12 +78,14 @@ body #root .App {
 body #root .App .mainRow {
   display: grid;
   grid-template: auto/1fr 5fr;
-  justify-items: end;
+  justify-items: center;
   align-items: center;
   margin: 2px;
   padding: 2px;
   height: auto;
   width: 100%;
+  text-transform: uppercase;
+  border: 3px solid blue;
 }
 
 body #root .App .mainRow .iconTitle {
@@ -75,13 +101,14 @@ body #root .App .mainRow .iconTitle {
 
 body #root .App .mainRow .topMenu {
   display: grid;
-  grid-template: auto/repeat(4, 1fr);
-  justify-items: center;
+  grid-template: auto/1fr repeat(4, auto);
+  justify-items: end;
   align-items: center;
   margin: 2px;
   padding: 2px;
-  height: auto;
-  width: auto;
+  height: 100%;
+  width: 100%;
+  border: 3px solid red;
 }
 
 body #root .App .Catalog {
@@ -167,17 +194,17 @@ body #root .App .Featured {
 }
 
 body #root .App .About h2 {
+  font-family: "'Roboto','sans-serif'";
   font-size: 30px;
   color: black;
   border-bottom: 2px solid grey;
-  font-family: 'Roboto','sans-serif';
 }
 
 body #root .App .Articles h2, body #root .App .Featured h2 {
+  font-family: "'Lato','sans-serif'";
   font-size: 35px;
   color: darkgrey;
   border-bottom: 2px solid grey;
-  font-family: 'Lato', 'sans-serif';
 }
 
 body #root .App .Articles .articleRow, body #root .App .Articles .featuredRow, body #root .App .Featured .articleRow, body #root .App .Featured .featuredRow {

@@ -8,6 +8,11 @@
 	height: $height;
 	width: $width;
 }
+@mixin fonts($fontfamily,$fontsize,$color){
+	font-family: $fontfamily;
+	font-size: $fontsize;
+	color: $color;
+}
 html {
 	scroll-behavior: smooth;
 }
@@ -27,17 +32,19 @@ a {
 }
 
 button {
-	@include displaygrid(1fr/1fr, center,center, 3px, 3px, auto, 20px);
+	@include displaygrid(1fr/1fr, center,center, 3px, 3px, auto, 100%);
+	@include fonts("'Jomolhari','sans-serif'",15px,black);
 	text-align: center;
-	font-family: 'Jomolhari','sans-serif';
-	font-size: 15px;
-	color: black;
-	background-color: lightblue;
-	border-radius: 3px;
+	text-transform: uppercase;
+	background-color: white;
+	border: 1px solid lightgrey;
+	border-radius: 6px;
+	box-shadow: 3px 3px darkgrey;
 	&:hover {
 		cursor: pointer;
 	}
 }
+
 
 body {
 	@include displaygrid(auto/auto,center,center,2px,2px, 100%, 100%);
@@ -51,14 +58,18 @@ body {
 			max-width: 1000px;
 
 			.mainRow {
-				@include displaygrid(auto/1fr 5fr, end, center, 2px,2px,auto, 100%);
+				@include displaygrid(auto/1fr 5fr, center, center, 2px,2px, auto, 100%);
+				text-transform: uppercase;
+				border: 3px solid blue;
 
 				.iconTitle {
 					@include displaygrid(1fr/1fr);
 				}
 
 				.topMenu {
-					@include displaygrid(auto/repeat(4,1fr));
+					@include displaygrid(auto/1fr repeat(4,auto),end,center,2px,2px,100%,100%);
+					border: 3px solid red;
+
 				}
 			}
 
@@ -110,20 +121,16 @@ body {
 			}
 			.About {
 				h2 {
-					font-size: 30px;
-					color: black;
+					@include fonts("'Roboto','sans-serif'",30px,black);
 					border-bottom: 2px solid grey;
-					font-family: 'Roboto','sans-serif';
 				}
 
 			}
 
 			.Articles, .Featured {
 				h2 {
-					font-size: 35px;
-					color: darkgrey;
+					@include fonts("'Lato','sans-serif'",35px,darkgrey);
 					border-bottom: 2px solid grey;
-					font-family: 'Lato', 'sans-serif';
 				}
 				.articleRow,.featuredRow {
 					font-family: 'Roboto Condensed', 'sans-serif';

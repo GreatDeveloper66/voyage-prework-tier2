@@ -26,8 +26,6 @@ a {
 	color: var(--linkColor);
 }
 
-
-
 body {
 	@include displaygrid(auto/auto,center,center,2px,2px, 100%, 100%);
 	background-color: #FFFFFF;
@@ -70,7 +68,10 @@ body {
 					border: 3px solid blue;
 
 					.card {
-						@include displaygrid(50px 1fr/1fr, center, center, 2px, 2px, 250px, 250px);
+						@include displaygrid(50px auto/1fr, center, center, 2px, 2px, auto, 250px);
+						overflow-x: hidden;
+						overflow-y: hidden;
+						min-height: 250px;
 						border: 3px solid red;
 
 						.topCardRow {
@@ -89,7 +90,6 @@ body {
 			.Featured {
 				display: none;
 			}
-
 			.footer {
 				@include displaygrid(1fr/1fr,center,center,2px,2px,auto,100%);
 			}

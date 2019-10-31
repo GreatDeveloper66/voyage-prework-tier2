@@ -11,37 +11,13 @@ class App extends Component {
 
   componentDidMount() {
     fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCjVPlNgusY2WdI0-pw303Rt-rIf6YYAVw&sort=popularity").then(res => res.json()).then((result) => {
-      console.log(this);
-      console.log(result);
       this.setState({
         fontFamilies: result.items.map(elem => elem.family.replace(/ /g, "+"))
       });
-      console.log(this.state.fontFamilies);
-    },
-    // Note: it's important to handle errors here
-    // instead of a catch() block so that we don't swallow
-    // exceptions from actual bugs in components.
-    (error) => {
+    }, (error) => {
       this.setState({data: "Didn't Work"});
     })
 
-    /*
-    const fetchData = fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCjVPlNgusY2WdI0-pw303Rt-rIf6YYAVw&sort=popularity')
-    .then(response => response.json())
-      .catch(() => Promise.error("It didn't work"));
-      console.log(fetchData);
-
-
-
-    fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCjVPlNgusY2WdI0-pw303Rt-rIf6YYAVw&sort=popularity')
-    .then(response => response.json())
-    .then(data => {
-      fetchData = data;
-      console.log(fetchData);
-    });
-    console.log(fetchData);
-    console.log(this.state.data.length);
-    */
     const catalog = document.getElementById('catalog');
     const features = document.getElementById('features');
     const articles = document.getElementById('articles');
@@ -70,10 +46,6 @@ class App extends Component {
   render() {
 
     return (<div className="App">
-      {/*
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Jomolhari|Staatliches|Open+Sans|Lato|Big+Shoulders+Text|Montserrat|Roboto+Condenseddisplay=swap" rel="stylesheet" />
-*/
-      }
       <Link fontFamilies={this.state.fontFamilies}/>
       <div className="mainRow">
         <div className="iconTitle">
@@ -126,11 +98,14 @@ class Catalog extends React.Component {
                     lorem donec massa. Neque vitae tempus
                     quam pellentesque nec nam.`,
       fontSize: 10,
-      filter: null
+      filter: null,
+      currentSearch: "",
+      currentCustomSample: ""
     };
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleFontChange = this.handleFontChange.bind(this);
     this.handleFamilyChange = this.handleFamilyChange.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
   handleTextChange(event) {
     event.preventDefault();
@@ -146,7 +121,8 @@ class Catalog extends React.Component {
                   lorem donec massa. Neque vitae tempus
                   quam pellentesque nec nam.`
       : event.target.value;
-    this.setState({sampleText: newText});
+      const newSample = event.target.value;
+    this.setState({sampleText: newText, currentCustomSample: newSample});
   }
   handleFontChange(event) {
     event.preventDefault();
@@ -157,15 +133,22 @@ class Catalog extends React.Component {
   handleFamilyChange(event) {
     event.preventDefault();
     const str = event.target.value;
-    let RegExpression = str === "" ? null : new RegExp("^" + str);
-    this.setState({filter: RegExpression});
+    let RegExpression = str === ""
+      ? null
+      : new RegExp("^" + str);
+    this.setState({filter: RegExpression, currentSearch: str});
+  }
+  handleReset(event) {
+    window.alert("hello");
+    event.preventDefault();
+    this.setState({filter: null, currentSearch: "", currentCustomSample: ""});
   }
 
   render() {
     return (<div className="Catalog">
       <div className="underMenu">
-        <input type="search" placeholder="search fonts" onChange={this.handleFamilyChange}></input>
-        <input type="text" placeholder="sample text" onChange={this.handleTextChange}></input>
+        <input type="search" placeholder="search fonts" onChange={this.handleFamilyChange} value={this.state.currentSearch}></input>
+        <input type="text" placeholder="sample text" onChange={this.handleTextChange} value={this.state.currentCustomSample}></input>
         <div className="instructions">
           Pick a font and choose a font size
         </div>
@@ -175,7 +158,7 @@ class Catalog extends React.Component {
           <option value="30">30px</option>
           <option value="40">40px</option>
         </select>
-        <button>Reset</button>
+        <button onClick={this.handleReset}>Reset</button>
       </div>
       <h1>Catalog Section</h1>
 

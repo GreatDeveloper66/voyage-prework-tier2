@@ -1,9 +1,9 @@
-:root {
-  --linkColor: #4169E1;
+html {
+  scroll-behavior: smooth;
 }
 
-html {
-	scroll-behavior: smooth;
+:root {
+  --linkColor: #4169E1;
 }
 
 h1 {
@@ -120,13 +120,16 @@ body #root .App .Catalog .cardGrid {
 
 body #root .App .Catalog .cardGrid .card {
   display: grid;
-  grid-template: 50px 1fr/1fr;
+  grid-template: 50px auto/1fr;
   justify-items: center;
   align-items: center;
   margin: 2px;
   padding: 2px;
-  height: 250px;
+  height: auto;
   width: 250px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  min-height: 250px;
   border: 3px solid red;
 }
 
@@ -173,7 +176,7 @@ body button#slider {
   position: fixed;
   width: 39px;
   height: 39px;
-  background: url("top.png") no-repeat center;
+  background: url("/top.png") no-repeat center;
   background-size: contain;
   bottom: 80px;
   right: 20px;

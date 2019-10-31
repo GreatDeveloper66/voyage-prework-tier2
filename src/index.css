@@ -166,17 +166,38 @@ body #root .App .Featured {
   display: none;
 }
 
-body #root .App .About h1 {
+body #root .App .About h2 {
   font-size: 30px;
   color: black;
   border-bottom: 2px solid grey;
   font-family: 'Roboto','sans-serif';
 }
 
-body #root .App .About p {
-  font-size: 25px;
+body #root .App .Articles h2 {
+  font-size: 35px;
+  color: darkgrey;
+  border-bottom: 2px solid grey;
+  font-family: 'Lato', 'sans-serif';
+}
+
+body #root .App .Articles .articleRow {
+  font-family: 'Roboto Condensed', 'sans-serif';
+  text-align: left;
   color: grey;
-  font-family: serif,'sans-serif';
+}
+
+body #root .App .Articles .articleRow .articleTitle {
+  font-size: 25px;
+  color: black;
+}
+
+body #root .App .Articles .articleRow .articleDescription {
+  font-size: 20px;
+}
+
+body #root .App .Articles .articleRow .type {
+  font-size: 18px;
+  font-style: italic;
 }
 
 body #root .App .footer {

@@ -225,8 +225,174 @@ class Featured extends React.Component {
 class Articles extends React.Component {
   render() {
     return (<div className="Articles">
-      <h1>Articles Section</h1>
-      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+      <h1>Articles</h1>
+      <div className="articleRow">
+        <div className="articleTitle">
+          <a href="https://design.google/library/hot-type-always-fresh/" target="_blank">
+          Hot Type, Always Fresh
+        </a>
+        </div>
+        <div className="articleDescription">
+          Get to know how the Google Fonts API keeps your type up-to-date and increasingly
+          efficient
+        </div>
+        <div className="type">
+          Editorial
+        </div>
+      </div>
+        <div className="articleRow">
+          <div className="articleTitle">
+            <a href="https://design.google/library/modernizing-arabic-typography-type-design/">
+            Modernizing Arabic Type for a Digital Audience
+          </a>
+          </div>
+          <div className="articleDescription">
+            Designers are finally doing justice to the complex, contextual alphabet with
+            a fresh approach to Arabic fonts and digital typography.
+          </div>
+          <div className="type">
+            Editorial
+          </div>
+
+      </div>
+      <div className="articleRow">
+        <div className="articleTitle">
+          <a href="https://design.google/library/new-wave-indian-type-design/" target="_blank">
+          The New Wave of Indian Type
+        </a>
+        </div>
+        <div className="articleDescription">
+          Studying the open source, collaborative work of Indian typographers, as a
+          model for global font design.
+        </div>
+        <div className="type">
+          Editorial
+        </div>
+      </div>
+      <div className="articleRow">
+        <div className="articleTitle">
+          <a href="https://design.google/library/choosing-web-fonts-beginners-guide/">
+          Choosing Web Fonts: A Beginer's Guide
+        </a>
+        </div>
+        <div className="articleDescription">
+          Take the mystery of font selection with our step-by-step guidance
+        </div>
+        <div className="type">
+          Guide
+        </div>
+      </div>
+      <div className="articleRow">
+        <div className="articleTitle">
+          <a href="https://design.google/library/spectral-new-screen-first-typeface/">
+          Spectral: A New Screen-First TypeFace
+        </a>
+        </div>
+        <div className="articleDescription">
+          Production Type introduces their latest commission for Google Fonts
+        </div>
+        <div className="type">
+          Editorial
+        </div>
+      </div>
+      <div className="articleRow">
+        <div className="articleTitle">
+          <a href="https://design.google/library/scripting-cyrillic/">
+          Scripting Cyrillic
+        </a>
+        </div>
+        <div className="articleDescription">
+          Highlighting the design process behind expanded language support in Google
+          Docs and Slides.
+        </div>
+        <div className="type">
+          Case Study
+        </div>
+      </div>
+      <div className="articleRow">
+        <div className="articleTitle">
+          <a href="https://design.google/library/superfamilies/">
+          Superfamilies
+        </a>
+        </div>
+        <div className="articleDescription">
+          Explore typefaces crafted to combine harmoniously, with this featured collection
+          on Google Fonts
+        </div>
+        <div className="type">
+          fonts.google.com
+        </div>
+      </div>
+      <div className="articleRow">
+        <div className="articleTitle">
+          <a href="https://design.google/library/atypi-2017-montréal/">
+          ATypl 2017 Montreal
+        </a>
+        </div>
+        <div className="articleDescription">
+          Watch talks by leading thinkers and practicioners in type design including
+          Paula Scher, Roger Black, Dan Rhatigan, and Santiago Orozco.
+        </div>
+        <div className="type">
+          www.youtube.com
+        </div>
+      </div>
+      <div className="articleRow">
+        <div className="articleTitle">
+          <a href="https://design.google/library/android-developers-guide-better-typography/">
+          The Android Developer's Guide to Better Typography
+        </a>
+        </div>
+        <div className="articleDescription">
+          Learn how to build an app with distinctive typography
+          using Android Studio's downloadable fonts feature
+        </div>
+        <div className="type">
+          medium.com
+        </div>
+      </div>
+      <div className="articleRow">
+        <div className="articleTitle">
+          <a href="https://design.google/library/introducing-space-mono/">
+          Space Mono's Retro-Future Voice
+        </a>
+        </div>
+        <div className="articleDescription">
+          The story behind a new monospaced typeface by
+          Colophon Foundry for Google Fonts
+        </div>
+        <div className="type">
+          medium.com
+        </div>
+      </div>
+      <div className="articleRow">
+        <div className="articleTitle">
+          <a href="https://design.google/library/reimagining-google-fonts/">
+          Reimagining Google Fonts
+        </a>
+        </div>
+        <div className="articleDescription">
+          The new Google Fonts make it easier than ever to browse
+          our collection of open source designer fonts and learn more about then
+          people who make them.
+        </div>
+        <div className="type">
+          Announcement
+        </div>
+      </div>
+      <div className="articleRow">
+        <div className="articleTitle">
+          <a href="https://design.google/library/visit-google-fonts/">
+          Discover Great Typography
+        </a>
+        </div>
+        <div className="articleDescription">
+          Find and test out free, open source web fonts from the Google Fonts catalog
+        </div>
+        <div className="type">
+          fonts.google.com
+        </div>
+      </div>
     </div>);
   }
 }
@@ -234,7 +400,7 @@ class Articles extends React.Component {
 class About extends React.Component {
   render() {
     return (<div className="About">
-      <h1>About</h1>
+      <h2>About</h2>
       <p>
         Google fonts is an excellent resources for web designers and developers.
         Over 96 open source fonts are made available at the

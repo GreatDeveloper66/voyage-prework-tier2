@@ -239,7 +239,7 @@ class Featured extends React.Component {
         </div>
         <div className="featuredCreated">
           <h3>
-            Created by <a href="https://ibm.com/design" target="_blank">IBM Brand Experience and Design</a>
+            Created by <a href="https://ibm.com/design" target="_blank" rel="noopener noreferer">IBM Brand Experience and Design</a>
           </h3>
           <p>
             IBM Brand Experience & Design (BX&D) oversees the expression
@@ -268,7 +268,7 @@ class Featured extends React.Component {
         </div>
         <div className="featuredCreated">
           <h3>
-            Created by <a href="https://design.google.com/" target="_blank">Google Design</a>
+            Created by <a href="https://design.google.com/" target="_blank" rel="noopener noreferrer">Google Design</a>
           </h3>
           <p>
             Google Design is a cooperative effort led by a group of
@@ -294,7 +294,7 @@ class Featured extends React.Component {
         </div>
         <div className="featuredCreated">
           <h3>
-            Created by <a href="https://design.google.com/" target="_blank">Google Design</a>
+            Created by <a href="https://design.google.com/" target="_blank" rel="noopener noreferrer">Google Design</a>
           </h3>
           <p>
             Google Design is a cooperative effort led by a group of
@@ -315,7 +315,7 @@ class Articles extends React.Component {
       <h2>Articles</h2>
       <div className="articleRow">
         <div className="articleTitle">
-          <a href="https://design.google/library/hot-type-always-fresh/" target="_blank">
+          <a href="https://design.google/library/hot-type-always-fresh/" target="_blank" rel="noopener noreferrer">
           Hot Type, Always Fresh
         </a>
         </div>
@@ -344,7 +344,7 @@ class Articles extends React.Component {
       </div>
       <div className="articleRow">
         <div className="articleTitle">
-          <a href="https://design.google/library/new-wave-indian-type-design/" target="_blank">
+          <a href="https://design.google/library/new-wave-indian-type-design/" target="_blank" rel="noopener noreferrer">
           The New Wave of Indian Type
         </a>
         </div>
@@ -491,7 +491,7 @@ class About extends React.Component {
       <p>
         Google fonts is an excellent resources for web designers and developers.
         Over 96 open source fonts are made available at the
-         <a href="https://fonts.google.com" target="_blank"> Google Fonts Site</a>
+         <a href="https://fonts.google.com" target="_blank" rel="noopner noreferrer"> Google Fonts Site</a>
         These fonts are contributions from highly skilled designers from around then
         world. Google offers all the fonts in the catalog are free and open source.
       </p>

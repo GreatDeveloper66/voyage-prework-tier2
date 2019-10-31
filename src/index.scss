@@ -66,6 +66,8 @@ body {
 					display: grid;
 					grid-template-columns: 1fr;
 					grid-template-rows: repeat(auto-fill,330px);
+					justify-items: center;
+					align-items: center;
 					width: 100%;
 					border: 3px solid blue;
 
@@ -110,7 +112,22 @@ body {
 			cursor: pointer;
 		}
 	}
+
 }
+@media only screen and (min-width: 530px) {
+	  body {
+			#root {
+				.App {
+					.Catalog {
+						.cardGrid {
+							grid-template-columns: repeat(2,1fr);
+						}
+					}
+				}
+			}
+		}
+	}
+
 @media only screen and (min-width: 768px) {
 	body {
 		#root {

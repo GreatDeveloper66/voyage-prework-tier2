@@ -64,8 +64,8 @@ body {
 
 				.cardGrid {
 					display: grid;
-					grid-template-columns: 1fr;
-					grid-template-rows: repeat(auto-fill,330px);
+					grid-template-columns: 330px;
+					grid-template-rows: repeat(auto-fill,auto);
 					justify-items: center;
 					align-items: center;
 					width: 100%;
@@ -120,7 +120,7 @@ body {
 				.App {
 					.Catalog {
 						.cardGrid {
-							grid-template-columns: repeat(2,1fr);
+							grid-template-columns: repeat(2,330px);
 						}
 					}
 				}
@@ -134,7 +134,7 @@ body {
 			.App {
 				.Catalog {
 					.cardGrid {
-						grid-template-columns: repeat(3,1fr);
+						grid-template-columns: repeat(3,330px);
 					}
 					.underMenu {
 						.instructions {

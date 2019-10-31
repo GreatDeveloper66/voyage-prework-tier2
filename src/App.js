@@ -174,7 +174,7 @@ class Catalog extends React.Component {
 
 const Link = (props) => {
   const fontArr = props.fontFamilies;
-  const fontStr = `https://fonts.googleapis.com/css?family=${fontArr.join('|')}$display=swap`;
+  const fontStr = `https://fonts.googleapis.com/css?family=${fontArr.join('|')}&display=swap`;
   return (<link href={fontStr} rel="stylesheet"/>);
 };
 

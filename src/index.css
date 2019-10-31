@@ -124,7 +124,7 @@ body #root .App .Catalog .cardGrid {
 
 body #root .App .Catalog .cardGrid .card {
   display: grid;
-  grid-template: 50px auto/1fr;
+  grid-template: auto auto/1fr;
   justify-items: center;
   align-items: center;
   margin: 2px;
@@ -139,13 +139,14 @@ body #root .App .Catalog .cardGrid .card {
 
 body #root .App .Catalog .cardGrid .card .topCardRow {
   display: grid;
-  grid-template: 1fr/1fr 1fr;
-  justify-items: space-between;
+  grid-template: 1fr/1fr 15px;
+  justify-items: start;
   align-items: center;
-  margin: 2px;
-  padding: 2px;
+  margin: 3px;
+  padding: 3px;
   height: 100%;
   width: 100%;
+  border-bottom: 2px solid grey;
 }
 
 body #root .App .Catalog .cardGrid .card .cardBody {
@@ -163,6 +164,19 @@ body #root .App .About,
 body #root .App .Articles,
 body #root .App .Featured {
   display: none;
+}
+
+body #root .App .About h1 {
+  font-size: 30px;
+  color: black;
+  border-bottom: 2px solid grey;
+  font-family: 'Roboto','sans-serif';
+}
+
+body #root .App .About p {
+  font-size: 25px;
+  color: grey;
+  font-family: serif,'sans-serif';
 }
 
 body #root .App .footer {

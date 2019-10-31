@@ -200,14 +200,13 @@ class Card extends React.Component {
 
   render() {
     return (<div className="card" style={{
-        fontSize: this.props.fontSize,
         fontFamily: this.props.fontFamily
       }}>
       <div className="topCardRow">
         {this.props.fontFamily}
         <p>+</p>
       </div>
-      <div className="cardBody">
+      <div className="cardBody" style={{fontSize: this.props.fontSize}}>
         {this.props.sampleText}
       </div>
     </div>);
@@ -235,8 +234,21 @@ class Articles extends React.Component {
 class About extends React.Component {
   render() {
     return (<div className="About">
-      <h1>About Section</h1>
-      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+      <h1>About</h1>
+      <p>
+        Google fonts is an excellent resources for web designers and developers.
+        Over 96 open source fonts are made available at the
+         <a href="https://fonts.google.com" target="_blank"> Google Fonts Site</a>
+        These fonts are contributions from highly skilled designers from around then
+        world. Google offers all the fonts in the catalog are free and open source.
+      </p>
+      <p>
+        The app utilizes Google's API to present these fonts to you. The underlying
+        code utilizes HTML, CSS, SCSS and JavaScript. In addition, the React Library
+        handles rendering and presentation of UI elements. The current version of this
+        app is a simple beta version. Future updates will add more capabilities such as
+        font selection and more refined search abilities.
+      </p>
     </div>);
   }
 }

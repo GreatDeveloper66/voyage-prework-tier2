@@ -238,7 +238,7 @@ class Featured extends React.Component {
         </div>
         <div className="featuredCreated">
           <h3>
-            Created by <a href="https://ibm.com/design" target="_blank" rel="noopener noreferer">IBM Brand Experience and Design</a>
+            Created by <a href="https://ibm.com/design" target="_blank" rel="noopener noreferrer">IBM Brand Experience and Design</a>
           </h3>
           <p>
             IBM Brand Experience & Design (BX&D) oversees the expression

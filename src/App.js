@@ -217,11 +217,11 @@ class Featured extends React.Component {
   render() {
     return (<div className="Featured">
       <h2>Featured Collections</h2>
-      <div class="featuredRow">
-        <div class="featuredTitle">
+      <div className="featuredRow">
+        <div className="featuredTitle">
           Featured Collection: Plex
         </div>
-        <div class="featuredDescription">
+        <div className="featuredDescription">
           IBM Plex™ is the new corporate typeface for IBM worldwide
           and an open source project developed by the IBM Brand &
           Experience team (BX&D). Plex is an international typeface
@@ -237,7 +237,7 @@ class Featured extends React.Component {
           unexpectedly expressive nature of the italics give you even more options for your
           designs.
         </div>
-        <div class="featuredCreated">
+        <div className="featuredCreated">
           <h3>
             Created by <a href="https://ibm.com/design" target="_blank">IBM Brand Experience and Design</a>
           </h3>
@@ -253,11 +253,11 @@ class Featured extends React.Component {
           </p>
         </div>
       </div>
-      <div class="featuredRow">
-        <div class="featuredTitle">
+      <div className="featuredRow">
+        <div className="featuredTitle">
           Featured Collection: SuperFamilies
         </div>
-        <div class="featuredDescription">
+        <div className="featuredDescription">
         A superfamily is a set of typefaces—sans and serif designs for example,
         or regular, slab, and rounded variations—that are crafted to work
         together in close harmony. In contrast to pairing typefaces from
@@ -266,7 +266,7 @@ class Featured extends React.Component {
         UI text (menus, tooltips) from editorial content (headlines, body copy),
         and to create a consistent tone with clear hierarchy, across an app or website.
         </div>
-        <div class="featuredCreated">
+        <div className="featuredCreated">
           <h3>
             Created by <a href="https://design.google.com/" target="_blank">Google Design</a>
           </h3>
@@ -279,11 +279,11 @@ class Featured extends React.Component {
           </p>
         </div>
       </div>
-      <div class="featuredRow">
-        <div class="featuredTitle">
+      <div className="featuredRow">
+        <div className="featuredTitle">
           Featured Collection: 2016 Fonts Refresh
         </div>
-        <div class="featuredDescription">
+        <div className="featuredDescription">
         With the help of typeface designers and font engineers from
         around the world, we started improving quality across our
         collection in 2016. Design work focused on typefaces that are
@@ -292,7 +292,7 @@ class Featured extends React.Component {
         re-spacing the type’s metrics and kerning, and in some cases
         re-drawing the designs from scratch.
         </div>
-        <div class="featuredCreated">
+        <div className="featuredCreated">
           <h3>
             Created by <a href="https://design.google.com/" target="_blank">Google Design</a>
           </h3>

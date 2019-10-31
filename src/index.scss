@@ -35,7 +35,7 @@ body {
 
 		.App {
 			@include displaygrid(auto auto auto auto/auto, center,center,2px,2px, auto, 90%);
-			max-width: 900px;
+			max-width: 1000px;
 
 			.mainRow {
 				@include displaygrid(auto/1fr 5fr, end, center, 2px,2px,auto, 100%);
@@ -64,6 +64,8 @@ body {
 
 				.cardGrid {
 					display: grid;
+					grid-template-columns: 1fr;
+					grid-template-rows: repeat(auto-fill,330px);
 					width: 100%;
 					border: 3px solid blue;
 
@@ -114,6 +116,9 @@ body {
 		#root {
 			.App {
 				.Catalog {
+					.cardGrid {
+						grid-template-columns: repeat(3,1fr);
+					}
 					.underMenu {
 						.instructions {
 							display: grid;

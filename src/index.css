@@ -48,7 +48,7 @@ body #root .App {
   padding: 2px;
   height: auto;
   width: 90%;
-  max-width: 900px;
+  max-width: 1000px;
 }
 
 body #root .App .mainRow {
@@ -114,6 +114,8 @@ body #root .App .Catalog .underMenu .instructions {
 
 body #root .App .Catalog .cardGrid {
   display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fill, 330px);
   width: 100%;
   border: 3px solid blue;
 }
@@ -187,6 +189,9 @@ body button#slider:hover {
 }
 
 @media only screen and (min-width: 768px) {
+  body #root .App .Catalog .cardGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
   body #root .App .Catalog .underMenu .instructions {
     display: grid;
   }

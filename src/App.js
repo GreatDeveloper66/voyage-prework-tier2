@@ -97,7 +97,7 @@ class Catalog extends React.Component {
                     Arcu dictum varius duis at consectetur
                     lorem donec massa. Neque vitae tempus
                     quam pellentesque nec nam.`,
-      fontSize: 10,
+      fontSize: 15,
       filter: null,
       currentSearch: "",
       currentCustomSample: ""
@@ -153,10 +153,11 @@ class Catalog extends React.Component {
           Pick a font and choose a font size
         </div>
         <select name="fontSizes" onChange={this.handleFontChange}>
+          <option value="5">5px</option>
           <option value="10">10px</option>
+          <option value="15" selected>15px</option>
           <option value="20">20px</option>
-          <option value="30">30px</option>
-          <option value="40">40px</option>
+          <option value="25">25px</option>
         </select>
         <button onClick={this.handleReset}>Reset</button>
       </div>

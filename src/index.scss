@@ -26,6 +26,19 @@ a {
 	color: var(--linkColor);
 }
 
+button {
+	@include displaygrid(1fr/1fr, center,center, 3px, 3px, auto, 20px);
+	text-align: center;
+	font-family: 'Jomolhari','sans-serif';
+	font-size: 15px;
+	color: black;
+	background-color: lightblue;
+	border-radius: 3px;
+	&:hover {
+		cursor: pointer;
+	}
+}
+
 body {
 	@include displaygrid(auto/auto,center,center,2px,2px, 100%, 100%);
 	background-color: #FFFFFF;
@@ -104,25 +117,31 @@ body {
 				}
 
 			}
-			.Articles {
+
+			.Articles, .Featured {
 				h2 {
 					font-size: 35px;
 					color: darkgrey;
 					border-bottom: 2px solid grey;
 					font-family: 'Lato', 'sans-serif';
 				}
-				.articleRow {
+				.articleRow,.featuredRow {
 					font-family: 'Roboto Condensed', 'sans-serif';
 					text-align: left;
 					color: grey;
-					.articleTitle {
+					margin-bottom: 15px;
+					border-bottom: 2px solid lightgrey;
+					.articleTitle,.FeaturedTitle {
 						font-size: 25px;
 						color: black;
 					}
-					.articleDescription {
+					.articleDescription,.featuredDescription {
 						font-size: 20px;
 					}
-					.type {
+					.type, .featuredCreated {
+						h3 {
+							font-size: 24px;
+						}
 						font-size: 18px;
 						font-style: italic;
 					}

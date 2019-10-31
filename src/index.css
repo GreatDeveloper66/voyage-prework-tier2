@@ -173,31 +173,37 @@ body #root .App .About h2 {
   font-family: 'Roboto','sans-serif';
 }
 
-body #root .App .Articles h2 {
+body #root .App .Articles h2, body #root .App .Featured h2 {
   font-size: 35px;
   color: darkgrey;
   border-bottom: 2px solid grey;
   font-family: 'Lato', 'sans-serif';
 }
 
-body #root .App .Articles .articleRow {
+body #root .App .Articles .articleRow, body #root .App .Articles .featuredRow, body #root .App .Featured .articleRow, body #root .App .Featured .featuredRow {
   font-family: 'Roboto Condensed', 'sans-serif';
   text-align: left;
   color: grey;
+  margin-bottom: 15px;
+  border-bottom: 2px solid lightgrey;
 }
 
-body #root .App .Articles .articleRow .articleTitle {
+body #root .App .Articles .articleRow .articleTitle, body #root .App .Articles .articleRow .FeaturedTitle, body #root .App .Articles .featuredRow .articleTitle, body #root .App .Articles .featuredRow .FeaturedTitle, body #root .App .Featured .articleRow .articleTitle, body #root .App .Featured .articleRow .FeaturedTitle, body #root .App .Featured .featuredRow .articleTitle, body #root .App .Featured .featuredRow .FeaturedTitle {
   font-size: 25px;
   color: black;
 }
 
-body #root .App .Articles .articleRow .articleDescription {
+body #root .App .Articles .articleRow .articleDescription, body #root .App .Articles .articleRow .featuredDescription, body #root .App .Articles .featuredRow .articleDescription, body #root .App .Articles .featuredRow .featuredDescription, body #root .App .Featured .articleRow .articleDescription, body #root .App .Featured .articleRow .featuredDescription, body #root .App .Featured .featuredRow .articleDescription, body #root .App .Featured .featuredRow .featuredDescription {
   font-size: 20px;
 }
 
-body #root .App .Articles .articleRow .type {
+body #root .App .Articles .articleRow .type, body #root .App .Articles .articleRow .featuredCreated, body #root .App .Articles .featuredRow .type, body #root .App .Articles .featuredRow .featuredCreated, body #root .App .Featured .articleRow .type, body #root .App .Featured .articleRow .featuredCreated, body #root .App .Featured .featuredRow .type, body #root .App .Featured .featuredRow .featuredCreated {
   font-size: 18px;
   font-style: italic;
+}
+
+body #root .App .Articles .articleRow .type h3, body #root .App .Articles .articleRow .featuredCreated h3, body #root .App .Articles .featuredRow .type h3, body #root .App .Articles .featuredRow .featuredCreated h3, body #root .App .Featured .articleRow .type h3, body #root .App .Featured .articleRow .featuredCreated h3, body #root .App .Featured .featuredRow .type h3, body #root .App .Featured .featuredRow .featuredCreated h3 {
+  font-size: 24px;
 }
 
 body #root .App .footer {

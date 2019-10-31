@@ -216,8 +216,95 @@ class Card extends React.Component {
 class Featured extends React.Component {
   render() {
     return (<div className="Featured">
-      <h1>Featured Section</h1>
-      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+      <h2>Featured Collections</h2>
+      <div class="featuredRow">
+        <div class="featuredTitle">
+          Featured Collection: Plex
+        </div>
+        <div class="featuredDescription">
+          IBM Plex™ is the new corporate typeface for IBM worldwide
+          and an open source project developed by the IBM Brand &
+          Experience team (BX&D). Plex is an international typeface
+          family designed to capture IBM’s brand spirit and history,
+          and to illustrate the unique relationship between mankind and
+          machine—a principal theme for IBM since the turn of the century.
+          The result is a neutral, yet friendly Grotesque style typeface that
+          balances design with the engineered details that make Plex™ distinctly IBM.
+          The family includes a Sans, Sans Condensed, Mono, and Serif and has excellent
+          legibility in print, web and mobile interfaces. Plex’s three designs work well
+          independently, and even better together. Use the Sans as a contemporary compadre,
+          the Serif for editorial storytelling, or the Mono to show code snippets. The
+          unexpectedly expressive nature of the italics give you even more options for your
+          designs.
+        </div>
+        <div class="featuredCreated">
+          <h3>
+            Created by <a href="https://ibm.com/design" target="_blank">IBM Brand Experience and Design</a>
+          </h3>
+          <p>
+            IBM Brand Experience & Design (BX&D) oversees the expression
+            and strategic evolution of every IBM
+            brand and sub-brand worldwide. Our work
+            crosses research and strategy, communications and
+            content development, symbology and systems, digital
+            and physical experiences, tools and training. Ultimately, BX&D
+            is here to make sure the role of the IBM brand is well understood
+            and well represented—across the globe and across every experience.
+          </p>
+        </div>
+      </div>
+      <div class="featuredRow">
+        <div class="featuredTitle">
+          Featured Collection: SuperFamilies
+        </div>
+        <div class="featuredDescription">
+        A superfamily is a set of typefaces—sans and serif designs for example,
+        or regular, slab, and rounded variations—that are crafted to work
+        together in close harmony. In contrast to pairing typefaces from
+        different font families, superfamilies are often used when more visual
+        cohesion is needed. UX designers might deploy a superfamily to delineate
+        UI text (menus, tooltips) from editorial content (headlines, body copy),
+        and to create a consistent tone with clear hierarchy, across an app or website.
+        </div>
+        <div class="featuredCreated">
+          <h3>
+            Created by <a href="https://design.google.com/" target="_blank">Google Design</a>
+          </h3>
+          <p>
+            Google Design is a cooperative effort led by a group of
+            designers, writers and developers at Google. We work across
+            teams to create tools, resources, events and publications
+            that support and further design and technology both inside and
+            outside of Google.
+          </p>
+        </div>
+      </div>
+      <div class="featuredRow">
+        <div class="featuredTitle">
+          Featured Collection: 2016 Fonts Refresh
+        </div>
+        <div class="featuredDescription">
+        With the help of typeface designers and font engineers from
+        around the world, we started improving quality across our
+        collection in 2016. Design work focused on typefaces that are
+        widely used and have great potential, adding glyphs to support more
+        languages, fixing incorrectly placed or shaped accent marks,
+        re-spacing the type’s metrics and kerning, and in some cases
+        re-drawing the designs from scratch.
+        </div>
+        <div class="featuredCreated">
+          <h3>
+            Created by <a href="https://design.google.com/" target="_blank">Google Design</a>
+          </h3>
+          <p>
+            Google Design is a cooperative effort led by a group of
+            designers, writers and developers at Google. We work across
+            teams to create tools, resources, events and publications
+            that support and further design and technology both inside and
+            outside of Google.
+          </p>
+        </div>
+      </div>
     </div>);
   }
 }
@@ -225,7 +312,7 @@ class Featured extends React.Component {
 class Articles extends React.Component {
   render() {
     return (<div className="Articles">
-      <h1>Articles</h1>
+      <h2>Articles</h2>
       <div className="articleRow">
         <div className="articleTitle">
           <a href="https://design.google/library/hot-type-always-fresh/" target="_blank">

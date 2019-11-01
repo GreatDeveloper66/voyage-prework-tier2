@@ -1,6 +1,17 @@
 import React, {Component} from 'react';
 import './App.css';
 
+const currentSample = () => `Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua.
+            Viverra nam libero justo laoreet
+            sit amet cursus sit. In metus vulputate
+            eu scelerisque felis imperdiet proin.
+            Arcu dictum varius duis at consectetur
+            lorem donec massa. Neque vitae tempus
+            quam pellentesque nec nam.`;
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -74,16 +85,7 @@ class Catalog extends React.Component {
     super(props);
     this.state = {
       fontFamilies: [],
-      sampleText: `Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua.
-                    Viverra nam libero justo laoreet
-                    sit amet cursus sit. In metus vulputate
-                    eu scelerisque felis imperdiet proin.
-                    Arcu dictum varius duis at consectetur
-                    lorem donec massa. Neque vitae tempus
-                    quam pellentesque nec nam.`,
+      sampleText: currentSample(),
       fontSize: 15,
       numCurrentDisplay: 0,
       numFonts: 0,
@@ -114,16 +116,7 @@ componentDidMount() {
   handleTextChange(event) {
     event.preventDefault();
     const newText = event.target.value === ""
-      ? `Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua.
-                  Viverra nam libero justo laoreet
-                  sit amet cursus sit. In metus vulputate
-                  eu scelerisque felis imperdiet proin.
-                  Arcu dictum varius duis at consectetur
-                  lorem donec massa. Neque vitae tempus
-                  quam pellentesque nec nam.`
+      ? currentSample()
       : event.target.value;
       const newSample = event.target.value;
     this.setState({sampleText: newText, currentCustomSample: newSample});
@@ -145,16 +138,7 @@ componentDidMount() {
   handleReset(event) {
     event.preventDefault();
     this.setState({filter: null, currentSearch: "", currentCustomSample: "",
-      sampleText: `Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua.
-                  Viverra nam libero justo laoreet
-                  sit amet cursus sit. In metus vulputate
-                  eu scelerisque felis imperdiet proin.
-                  Arcu dictum varius duis at consectetur
-                  lorem donec massa. Neque vitae tempus
-                  quam pellentesque nec nam.`,
+      sampleText: currentSample(),
       numCurrentDisplay: 6});
   }
 
@@ -189,7 +173,7 @@ componentDidMount() {
       <div className="cardGrid">
         <CardGrid fontFamilies={fontFamiliesFiltered(this.state.fontFamilies, this.state.filter,this.state.numCurrentDisplay)} fontSize={this.state.fontSize} sampleText={this.state.sampleText}/>
       </div>
-,     <button type="submit" onSubmit={this.handleSubmit}>More</button>
+     <button type="submit" onClick={this.handleSubmit}>More</button>
     </div>);
   }
 }

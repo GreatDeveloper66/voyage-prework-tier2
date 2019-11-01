@@ -13,9 +13,7 @@ const currentSample = () => `Lorem ipsum dolor sit amet,
             quam pellentesque nec nam.`;
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+
   componentDidMount() {
     const catalog = document.getElementById('catalog');
     const features = document.getElementById('features');
@@ -210,7 +208,7 @@ class Card extends React.Component {
       }}>
       <div className="topCardRow">
         <p>{this.props.fontFamily}</p>
-        <button data-toggle="tooltip" data-placement="top" title="Add font family"><i class="fas fa-plus-circle"></i></button>
+        <button data-toggle="tooltip" data-placement="top" title="Add font family"><i className="fas fa-plus-circle"></i></button>
       </div>
       <div className="cardBody" style={{fontSize: this.props.fontSize}}>
         {this.props.sampleText}

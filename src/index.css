@@ -158,6 +158,8 @@ body #root .App .Catalog .cardGrid .card {
   overflow-x: hidden;
   overflow-y: hidden;
   min-height: 250px;
+  border: 1px solid grey;
+  box-shadow: 5px 5px 3px 3px grey;
 }
 
 body #root .App .Catalog .cardGrid .card .topCardRow {

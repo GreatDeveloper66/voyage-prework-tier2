@@ -97,6 +97,8 @@ body {
 						overflow-x: hidden;
 						overflow-y: hidden;
 						min-height: 250px;
+						border: 1px solid grey;
+						box-shadow: 5px 5px 3px 3px grey;
 
 						.topCardRow {
 							@include displaygrid(1fr/1fr 15px, start, center, 3px, 3px, 100%,100%);

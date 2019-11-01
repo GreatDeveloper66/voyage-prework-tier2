@@ -209,8 +209,8 @@ class Card extends React.Component {
         fontFamily: this.props.fontFamily
       }}>
       <div className="topCardRow">
-        {this.props.fontFamily}
-        <button data-toggle="tooltip" data-placement="top" title="Add font family"><p>+</p></button>
+        <p>{this.props.fontFamily}</p>
+        <button data-toggle="tooltip" data-placement="top" title="Add font family"><i class="fas fa-plus-circle"></i></button>
       </div>
       <div className="cardBody" style={{fontSize: this.props.fontSize}}>
         {this.props.sampleText}

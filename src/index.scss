@@ -104,7 +104,7 @@ body {
 					width: 100%;
 
 					.card {
-						@include displaygrid(auto auto/1fr, center, center, 2px, 2px, auto, 250px);
+						@include displaygrid(35px auto/1fr, center, center, 2px, 2px, auto, 250px);
 						overflow-x: hidden;
 						overflow-y: hidden;
 						min-height: 250px;
@@ -112,8 +112,14 @@ body {
 						box-shadow: 5px 5px 3px 3px grey;
 
 						.topCardRow {
-							@include displaygrid(1fr/1fr 15px, start, center, 3px, 3px, 100%,100%);
+							@include displaygrid(1fr/1fr 30px, start, center, 3px, 3px, 100%,100%);
 							border-bottom: 2px solid grey;
+
+							button {
+								width: 20px;
+								height: 20px;
+							}
+
 						}
 
 						.cardBody {

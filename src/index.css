@@ -161,7 +161,7 @@ body #root .App .Catalog .cardGrid {
 
 body #root .App .Catalog .cardGrid .card {
   display: grid;
-  grid-template: auto auto/1fr;
+  grid-template: 35px auto/1fr;
   justify-items: center;
   align-items: center;
   margin: 2px;
@@ -177,7 +177,7 @@ body #root .App .Catalog .cardGrid .card {
 
 body #root .App .Catalog .cardGrid .card .topCardRow {
   display: grid;
-  grid-template: 1fr/1fr 15px;
+  grid-template: 1fr/1fr 30px;
   justify-items: start;
   align-items: center;
   margin: 3px;
@@ -185,6 +185,12 @@ body #root .App .Catalog .cardGrid .card .topCardRow {
   height: 100%;
   width: 100%;
   border-bottom: 2px solid grey;
+}
+
+body #root .App .Catalog .cardGrid .card .topCardRow button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
 }
 
 body #root .App .Catalog .cardGrid .card .cardBody {

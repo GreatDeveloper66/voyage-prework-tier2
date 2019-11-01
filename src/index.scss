@@ -60,7 +60,6 @@ body {
 			.mainRow {
 				@include displaygrid(auto/1fr 5fr, center, center, 2px,2px, auto, 100%);
 				text-transform: uppercase;
-				border: 3px solid blue;
 
 				.iconTitle {
 					@include displaygrid(1fr/1fr);
@@ -68,7 +67,6 @@ body {
 
 				.topMenu {
 					@include displaygrid(auto/1fr repeat(4,auto),end,center,2px,2px,100%,100%);
-					border: 3px solid red;
 
 				}
 			}
@@ -93,14 +91,12 @@ body {
 					justify-items: center;
 					align-items: center;
 					width: 100%;
-					border: 3px solid blue;
 
 					.card {
 						@include displaygrid(auto auto/1fr, center, center, 2px, 2px, auto, 250px);
 						overflow-x: hidden;
 						overflow-y: hidden;
 						min-height: 250px;
-						border: 3px solid red;
 
 						.topCardRow {
 							@include displaygrid(1fr/1fr 15px, start, center, 3px, 3px, 100%,100%);

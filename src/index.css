@@ -85,7 +85,6 @@ body #root .App .mainRow {
   height: auto;
   width: 100%;
   text-transform: uppercase;
-  border: 3px solid blue;
 }
 
 body #root .App .mainRow .iconTitle {
@@ -108,7 +107,6 @@ body #root .App .mainRow .topMenu {
   padding: 2px;
   height: 100%;
   width: 100%;
-  border: 3px solid red;
 }
 
 body #root .App .Catalog {
@@ -146,7 +144,6 @@ body #root .App .Catalog .cardGrid {
   justify-items: center;
   align-items: center;
   width: 100%;
-  border: 3px solid blue;
 }
 
 body #root .App .Catalog .cardGrid .card {
@@ -161,7 +158,6 @@ body #root .App .Catalog .cardGrid .card {
   overflow-x: hidden;
   overflow-y: hidden;
   min-height: 250px;
-  border: 3px solid red;
 }
 
 body #root .App .Catalog .cardGrid .card .topCardRow {

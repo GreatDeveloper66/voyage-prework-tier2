@@ -4,20 +4,8 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      fontFamilies: []
-    };
   }
-
   componentDidMount() {
-    fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCjVPlNgusY2WdI0-pw303Rt-rIf6YYAVw&sort=popularity").then(res => res.json()).then((result) => {
-      this.setState({
-        fontFamilies: result.items.map(elem => elem.family.replace(/ /g, "+"))
-      });
-    }, (error) => {
-      this.setState({data: "Didn't Work"});
-    })
-
     const catalog = document.getElementById('catalog');
     const features = document.getElementById('features');
     const articles = document.getElementById('articles');
@@ -44,9 +32,7 @@ class App extends Component {
   }
 
   render() {
-
     return (<div className="App">
-      <Link fontFamilies={this.state.fontFamilies}/>
       <div className="mainRow">
         <div className="iconTitle">
           Google Fonts
@@ -74,7 +60,7 @@ class App extends Component {
           </div>
         </div>
       </div>
-      <Catalog fontFamilies={this.state.fontFamilies}/>
+      <Catalog />
       <Featured/>
       <Articles/>
       <About/>
@@ -87,6 +73,7 @@ class Catalog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      fontFamilies: [],
       sampleText: `Lorem ipsum dolor sit amet,
                     consectetur adipiscing elit,
                     sed do eiusmod tempor incididunt
@@ -98,6 +85,8 @@ class Catalog extends React.Component {
                     lorem donec massa. Neque vitae tempus
                     quam pellentesque nec nam.`,
       fontSize: 15,
+      numCurrentDisplay: 0,
+      numFonts: 0,
       filter: null,
       currentSearch: "",
       currentCustomSample: ""
@@ -106,7 +95,22 @@ class Catalog extends React.Component {
     this.handleFontChange = this.handleFontChange.bind(this);
     this.handleFamilyChange = this.handleFamilyChange.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+
+componentDidMount() {
+  fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCjVPlNgusY2WdI0-pw303Rt-rIf6YYAVw&sort=popularity").then(res => res.json()).then((result) => {
+    let fontArr = result.items.map(elem => elem.family.replace(/ /g, "+"));
+    this.setState({
+      fontFamilies: fontArr,
+      numCurrentDisplay: 6,
+      numFonts: fontArr.length
+    });
+  }, (error) => {
+    this.setState({data: "Didn't Work"});
+  })
+}
   handleTextChange(event) {
     event.preventDefault();
     const newText = event.target.value === ""
@@ -139,13 +143,32 @@ class Catalog extends React.Component {
     this.setState({filter: RegExpression, currentSearch: str});
   }
   handleReset(event) {
-    window.alert("hello");
     event.preventDefault();
-    this.setState({filter: null, currentSearch: "", currentCustomSample: ""});
+    this.setState({filter: null, currentSearch: "", currentCustomSample: "",
+      sampleText: `Lorem ipsum dolor sit amet,
+                  consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt
+                  ut labore et dolore magna aliqua.
+                  Viverra nam libero justo laoreet
+                  sit amet cursus sit. In metus vulputate
+                  eu scelerisque felis imperdiet proin.
+                  Arcu dictum varius duis at consectetur
+                  lorem donec massa. Neque vitae tempus
+                  quam pellentesque nec nam.`,
+      numCurrentDisplay: 6});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const curr = this.state.numCurrentDisplay;
+    const total = this.state.numFonts;
+    const addNum = curr < total ? (total - curr < 6 ? total - curr : 6) : 0;
+    this.setState({numCurrentDisplay: curr + addNum});
   }
 
   render() {
     return (<div className="Catalog">
+    <Link fontFamilies={this.state.fontFamilies}/>
       <div className="underMenu">
         <input type="search" placeholder="search fonts" onChange={this.handleFamilyChange} value={this.state.currentSearch}></input>
         <input type="text" placeholder="sample text" onChange={this.handleTextChange} value={this.state.currentCustomSample}></input>
@@ -164,10 +187,9 @@ class Catalog extends React.Component {
       <h1>Catalog Section</h1>
 
       <div className="cardGrid">
-        <CardGrid fontFamilies={fontFamiliesFiltered(this.props.fontFamilies, this.state.filter)} fontSize={this.state.fontSize} sampleText={this.state.sampleText}/>
+        <CardGrid fontFamilies={fontFamiliesFiltered(this.state.fontFamilies, this.state.filter,this.state.numCurrentDisplay)} fontSize={this.state.fontSize} sampleText={this.state.sampleText}/>
       </div>
-
-      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+,     <button type="submit" onSubmit={this.handleSubmit}>More</button>
     </div>);
   }
 }
@@ -178,11 +200,11 @@ const Link = (props) => {
   return (<link href={fontStr} rel="stylesheet"/>);
 };
 
-const fontFamiliesFiltered = (fontFamilies, regExp) => {
+const fontFamiliesFiltered = (fontFamilies, regExp, currentNum) => {
   if (regExp) {
-    return fontFamilies.filter(fam => regExp.test(fam));
+    return fontFamilies.filter(fam => regExp.test(fam)).slice(0,currentNum);
   }
-  return fontFamilies;
+  return fontFamilies.slice(0,currentNum);
 };
 
 const CardGrid = (props) => {
@@ -196,7 +218,6 @@ const CardGrid = (props) => {
 };
 
 class Card extends React.Component {
-
   render() {
     return (<div className="card" style={{
         fontFamily: this.props.fontFamily

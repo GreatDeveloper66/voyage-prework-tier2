@@ -89,7 +89,8 @@ class Catalog extends React.Component {
       numFonts: 0,
       filter: null,
       currentSearch: "",
-      currentCustomSample: ""
+      currentCustomSample: "",
+      fontsDisplayed: []
     };
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleFontChange = this.handleFontChange.bind(this);
@@ -153,7 +154,7 @@ componentDidMount() {
 
   render() {
     return (<div className="Catalog">
-    <Link fontFamilies={this.state.fontFamilies}/>
+    <Link fontFamilies={this.state.fontFamilies} />
       <div className="underMenu">
         <input type="search" placeholder="search fonts" onChange={this.handleFamilyChange} value={this.state.currentSearch}></input>
        <input type="search" placeholder="sample text" onChange={this.handleTextChange} value={this.state.currentCustomSample}></input>
@@ -182,7 +183,8 @@ componentDidMount() {
 const Link = (props) => {
   const fontArr = props.fontFamilies;
   const fontStr = `https://fonts.googleapis.com/css?family=${fontArr.join('|')}&display=swap`;
-  return (<link href={fontStr} rel="stylesheet"/>);
+  return (<link href={fontStr} rel="stylesheet" type=
+  "text/css"/>);
 };
 
 const fontFamiliesFiltered = (fontFamilies, regExp, currentNum) => {

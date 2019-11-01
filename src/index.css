@@ -150,7 +150,7 @@ body #root .App .Catalog .underMenu {
 
 body #root .App .Catalog .underMenu .instructions {
   font-family: "'Roboto','sans-serif'";
-  font-size: 30px;
+  font-size: 25px;
   color: black;
   text-transform: uppercase;
   text-align: center;

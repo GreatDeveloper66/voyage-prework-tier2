@@ -93,6 +93,8 @@ body {
 					@include displaygrid(auto/auto auto 1fr auto auto, space-around,center,2px,2px,auto,100%);
 
 					.instructions {
+						@include fonts("'Roboto','sans-serif'", 25px, black);
+						text-transform: uppercase;
 						text-align: center;
 						display: none;
 					}

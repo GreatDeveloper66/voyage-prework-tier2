@@ -171,7 +171,7 @@ componentDidMount() {
         </select>
         <button onClick={this.handleReset}>Reset</button>
       </div>
-      <h1>Catalog Section</h1>
+      <h1>Catalog</h1>
 
       <div className="cardGrid">
         <CardGrid fontFamilies={fontFamiliesFiltered(this.state.fontFamilies, this.state.filter,this.state.numCurrentDisplay)} fontSize={this.state.fontSize} sampleText={this.state.sampleText}/>

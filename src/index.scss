@@ -45,6 +45,17 @@ button {
 	}
 }
 
+input {
+	margin-right: 5px;
+	height: 100%;
+	width: auto;
+	&::placeholder {
+		@include fonts("'Roboto','sans-serif'",20px,black);
+		font-weight: bold;
+	}
+}
+
+
 
 body {
 	@include displaygrid(auto/auto,center,center,2px,2px, 100%, 100%);

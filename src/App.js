@@ -158,7 +158,7 @@ componentDidMount() {
     <Link fontFamilies={this.state.fontFamilies}/>
       <div className="underMenu">
         <input type="search" placeholder="search fonts" onChange={this.handleFamilyChange} value={this.state.currentSearch}></input>
-        <input type="text" placeholder="sample text" onChange={this.handleTextChange} value={this.state.currentCustomSample}></input>
+       <input type="text" placeholder="sample text" onChange={this.handleTextChange} value={this.state.currentCustomSample}></input>
         <div className="instructions">
           Pick a font and choose a font size
         </div>
@@ -210,7 +210,7 @@ class Card extends React.Component {
       }}>
       <div className="topCardRow">
         {this.props.fontFamily}
-        <p>+</p>
+        <button data-toggle="tooltip" data-placement="top" title="Add font family"><p>+</p></button>
       </div>
       <div className="cardBody" style={{fontSize: this.props.fontSize}}>
         {this.props.sampleText}

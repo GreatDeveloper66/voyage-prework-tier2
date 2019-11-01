@@ -1,3 +1,5 @@
+@import url('fontawesome-free-5.11.2-web/css/all.min.css');
+
 @mixin displaygrid($gridtemplate, $justifyitems: center, $alignitems: center, $margin: 2px,$padding: 2px,$height: auto,$width: auto) {
 	display: grid;
 	grid-template: $gridtemplate;
@@ -45,12 +47,14 @@ button {
 	}
 }
 
+input, select {
+	height: 40px;
+	margin-right: 10px;
+}
 input {
-	margin-right: 5px;
-	height: 100%;
 	width: auto;
 	&::placeholder {
-		@include fonts("'Roboto','sans-serif'",20px,black);
+		@include fonts("'Roboto','sans-serif'",15px,black);
 		font-weight: bold;
 	}
 }
@@ -87,7 +91,6 @@ body {
 
 				.underMenu {
 					@include displaygrid(auto/auto auto 1fr auto auto, space-around,center,2px,2px,auto,100%);
-					background-color: grey;
 
 					.instructions {
 						text-align: center;
@@ -114,10 +117,10 @@ body {
 						.topCardRow {
 							@include displaygrid(1fr/1fr 30px, start, center, 3px, 3px, 100%,100%);
 							border-bottom: 2px solid grey;
-
 							button {
 								width: 20px;
 								height: 20px;
+								border-radius: 50%;
 							}
 
 						}

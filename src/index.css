@@ -1,5 +1,4 @@
-@import url('fontawesome-free-5.11.2-web/css/all.min.css');
-
+@import url("fontawesome-free-5.11.2-web/css/all.min.css");
 html {
   scroll-behavior: smooth;
 }
@@ -42,15 +41,18 @@ button:hover {
   cursor: pointer;
 }
 
+input, select {
+  height: 40px;
+  margin-right: 10px;
+}
+
 input {
-  margin-right: 5px;
-  height: 100%;
   width: auto;
 }
 
 input::placeholder {
   font-family: "'Roboto','sans-serif'";
-  font-size: 20px;
+  font-size: 15px;
   color: black;
   font-weight: bold;
 }
@@ -144,10 +146,13 @@ body #root .App .Catalog .underMenu {
   padding: 2px;
   height: auto;
   width: 100%;
-  background-color: grey;
 }
 
 body #root .App .Catalog .underMenu .instructions {
+  font-family: "'Roboto','sans-serif'";
+  font-size: 30px;
+  color: black;
+  text-transform: uppercase;
   text-align: center;
   display: none;
 }

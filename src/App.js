@@ -137,9 +137,12 @@ componentDidMount() {
   }
   handleReset(event) {
     event.preventDefault();
-    this.setState({filter: null, currentSearch: "", currentCustomSample: "",
+    this.setState({filter: null,
+      currentSearch: "",
+      currentCustomSample: "",
       sampleText: currentSample(),
-      numCurrentDisplay: 6});
+      numCurrentDisplay: 6,
+      fontSize: 15});
   }
 
   handleSubmit(event) {

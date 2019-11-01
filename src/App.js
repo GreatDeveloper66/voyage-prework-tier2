@@ -159,7 +159,7 @@ componentDidMount() {
         <div className="instructions">
           Pick a font and choose a font size
         </div>
-        <select name="fontSizes" onChange={this.handleFontChange} value={15}>
+        <select name="fontSizes" onChange={this.handleFontChange} value={this.state.fontSize}>
           <option value="5">5px</option>
           <option value="10">10px</option>
           <option value="15">15px</option>
@@ -196,7 +196,6 @@ const CardGrid = (props) => {
   const Size = props.fontSize;
   const Text = props.sampleText;
   const Cards = Families.map((fam, index) =>
-  // Correct! Key should be specified inside the array.
   <Card fontSize={Size} fontFamily={fam} sampleText={Text} key={index}/>);
   return (Cards);
 };

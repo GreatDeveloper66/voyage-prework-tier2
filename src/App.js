@@ -18,10 +18,19 @@ class App extends Component {
     this.state = {
       sampleText: currentSample(),
       currentCustomSample: '',
-      fontSize: 15
+      fontSize: 15,
+      fontFamilies: [],
+      numCurrentDisplay: 0,
+      numFonts: 0,
+      filter: null,
+      currentSearch: "",
+      fontsDisplayed: []
     }
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleFontChange = this.handleFontChange.bind(this);
+    this.handleFamilyChange = this.handleFamilyChange.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleTextChange(event) {
     event.preventDefault();
@@ -39,7 +48,48 @@ class App extends Component {
     });
   }
 
+  handleFamilyChange(event) {
+    event.preventDefault();
+    const str = event.target.value;
+    let RegExpression = str === ""
+      ? null
+      : new RegExp("^" + str);
+    this.setState({filter: RegExpression, currentSearch: str});
+  }
+  handleReset(event) {
+    event.preventDefault();
+    this.setState({
+      filter: null,
+      currentSearch: "",
+      currentCustomSample: "",
+      sampleText: currentSample(),
+      numCurrentDisplay: 6,
+      fontSize: 15
+    });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const curr = this.state.numCurrentDisplay;
+    const total = this.state.numFonts;
+    const addNum = curr < total
+      ? (
+        total - curr < 6
+        ? total - curr
+        : 6)
+      : 0;
+    this.setState({
+      numCurrentDisplay: curr + addNum
+    });
+  }
+
   componentDidMount() {
+    fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCjVPlNgusY2WdI0-pw303Rt-rIf6YYAVw&sort=popularity").then(res => res.json()).then((result) => {
+      let fontArr = result.items.map(elem => elem.family.replace(/ /g, "+"));
+      this.setState({fontFamilies: fontArr, numCurrentDisplay: 6, numFonts: fontArr.length});
+    }, (error) => {
+      this.setState({data: "Didn't Work"});
+    })
     const catalog = document.getElementById('catalog');
     const features = document.getElementById('features');
     const articles = document.getElementById('articles');
@@ -94,7 +144,11 @@ class App extends Component {
           </div>
         </div>
       </div>
-      <Catalog sampleText={this.state.sampleText} currentCustomSample={this.state.currentCustomSample} handleTextChange={this.handleTextChange} handleFontChange={this.handleFontChange} fontSize={this.state.fontSize}/>
+      <Catalog sampleText={this.state.sampleText} currentCustomSample={this.state.currentCustomSample}
+        handleTextChange={this.handleTextChange} handleFontChange={this.handleFontChange}
+        fontSize={this.state.fontSize} fontFamilies={this.state.fontFamilies} filter={this.state.filter}
+        numCurrentDisplay={this.state.numCurrentDisplay} handleFamilyChange={this.handleFamilyChange}
+        handleReset={this.handleReset} handleSubmit={this.handleSubmit} />
       <Featured/>
       <Articles/>
       <About/>
@@ -106,69 +160,14 @@ class App extends Component {
 class Catalog extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      fontFamilies: [],
-      numCurrentDisplay: 0,
-      numFonts: 0,
-      filter: null,
-      currentSearch: "",
-      fontsDisplayed: []
-    };
-
-    this.handleFamilyChange = this.handleFamilyChange.bind(this);
-    this.handleReset = this.handleReset.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCjVPlNgusY2WdI0-pw303Rt-rIf6YYAVw&sort=popularity").then(res => res.json()).then((result) => {
-      let fontArr = result.items.map(elem => elem.family.replace(/ /g, "+"));
-      this.setState({fontFamilies: fontArr, numCurrentDisplay: 6, numFonts: fontArr.length});
-    }, (error) => {
-      this.setState({data: "Didn't Work"});
-    })
-  }
-
-  handleFamilyChange(event) {
-    event.preventDefault();
-    const str = event.target.value;
-    let RegExpression = str === ""
-      ? null
-      : new RegExp("^" + str);
-    this.setState({filter: RegExpression, currentSearch: str});
-  }
-  handleReset(event) {
-    event.preventDefault();
-    this.setState({
-      filter: null,
-      currentSearch: "",
-      currentCustomSample: "",
-      sampleText: currentSample(),
-      numCurrentDisplay: 6,
-      fontSize: 15
-    });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    const curr = this.state.numCurrentDisplay;
-    const total = this.state.numFonts;
-    const addNum = curr < total
-      ? (
-        total - curr < 6
-        ? total - curr
-        : 6)
-      : 0;
-    this.setState({
-      numCurrentDisplay: curr + addNum
-    });
-  }
 
   render() {
     return (<div className="Catalog">
-      <Link fontFamilies={this.state.fontFamilies}/>
+      <Link fontFamilies={this.props.fontFamilies}/>
       <div className="underMenu">
-        <input type="search" placeholder="search fonts" onChange={this.handleFamilyChange} value={this.state.currentSearch}></input>
+        <input type="search" placeholder="search fonts" onChange={this.props.handleFamilyChange} value={this.props.currentSearch}></input>
         <input type="search" placeholder="sample text" onChange={this.props.handleTextChange} value={this.props.currentCustomSample}></input>
         <div className="instructions">
           Pick a font and choose a font size
@@ -180,14 +179,14 @@ class Catalog extends React.Component {
           <option value="20">20px</option>
           <option value="25">25px</option>
         </select>
-        <button onClick={this.handleReset}>Reset</button>
+        <button onClick={this.props.handleReset}>Reset</button>
       </div>
       <h1>Catalog</h1>
 
       <div className="cardGrid">
-        <CardGrid fontFamilies={fontFamiliesFiltered(this.state.fontFamilies, this.state.filter, this.state.numCurrentDisplay)} fontSize={this.props.fontSize} sampleText={this.props.sampleText}/>
+        <CardGrid fontFamilies={fontFamiliesFiltered(this.props.fontFamilies, this.props.filter, this.props.numCurrentDisplay)} fontSize={this.props.fontSize} sampleText={this.props.sampleText}/>
       </div>
-      <button type="submit" onClick={this.handleSubmit}>More</button>
+      <button type="submit" onClick={this.props.handleSubmit}>More</button>
     </div>);
   }
 }

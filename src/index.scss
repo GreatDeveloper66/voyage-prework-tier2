@@ -214,14 +214,14 @@ body {
 
 	div#fontsChosen {
 		position: fixed;
-		@include displaygrid(50px 50px/450px, center, center,2px, 2px, auto,auto);
+		@include displaygrid(50px 50px/600px, center, center,2px, 2px, auto,auto);
 		background-color: lightblue;
 		bottom: 10px;
 		right: 50%;
 		.inputRow {
 			@include displaygrid(1fr/auto auto,space-between,center,2px,2px,auto,auto);
 			input {
-				width: 250px;
+				width: 400px;
 				height: 98%;
 			}
 		}

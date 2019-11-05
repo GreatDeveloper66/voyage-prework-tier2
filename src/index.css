@@ -302,7 +302,7 @@ body button#slider:hover {
 body div#fontsChosen {
   position: fixed;
   display: grid;
-  grid-template: 50px 50px/450px;
+  grid-template: 50px 50px/600px;
   justify-items: center;
   align-items: center;
   margin: 2px;
@@ -324,7 +324,7 @@ body div#fontsChosen .inputRow {
   width: auto;
 }
 body div#fontsChosen .inputRow input {
-  width: 250px;
+  width: 400px;
   height: 98%;
 }
 

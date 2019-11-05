@@ -299,12 +299,33 @@ body button#slider {
 body button#slider:hover {
   cursor: pointer;
 }
-body input#fontsChosen {
+body div#fontsChosen {
   position: fixed;
+  display: grid;
+  grid-template: 50px 50px/450px;
+  justify-items: center;
+  align-items: center;
+  margin: 2px;
+  padding: 2px;
+  height: auto;
+  width: auto;
+  background-color: lightblue;
   bottom: 10px;
   right: 50%;
-  width: 450px;
-  height: 50px;
+}
+body div#fontsChosen .inputRow {
+  display: grid;
+  grid-template: 1fr/auto auto;
+  justify-items: space-between;
+  align-items: center;
+  margin: 2px;
+  padding: 2px;
+  height: auto;
+  width: auto;
+}
+body div#fontsChosen .inputRow input {
+  width: 250px;
+  height: 98%;
 }
 
 @media only screen and (min-width: 530px) {

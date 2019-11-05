@@ -157,7 +157,17 @@ class App extends Component {
       <About/>
       <footer className="footer">Google Font API coded by Adam Shaffer</footer>
     </div>
-    <input id="fontsChosen" type="text" value="font links" placeholder="font links"></input>
+    <div id="fontsChosen">
+      <div class="inputRow">
+      <label>@import</label>
+      <input type="text" value=""></input>
+      </div>
+      <div class="inputRow">
+      <label>standard</label>
+      <input type="text" value=""></input>
+      </div>
+    </div>
+
   </div>
   );
   }

@@ -69,7 +69,11 @@ class App extends Component {
       currentCustomSample: "",
       sampleText: currentSample(),
       numCurrentDisplay: 6,
-      fontSize: 15
+      fontSize: 15,
+      importFontsChosen: "",
+      standardFontsChosen: "",
+      importString: "",
+      standardString: ""
     });
   }
 

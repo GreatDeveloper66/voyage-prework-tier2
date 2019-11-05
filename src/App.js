@@ -89,11 +89,11 @@ class App extends Component {
   }
 
   addFontsChosen(fontFamily){
-    window.alert('clicked');
     const oldImport = this.state.importFontsChosen;
     const oldStandard = this.state.standardFontsChosen;
-    const newImport = oldImport + "|" + fontFamily;
-    const newStandard = oldStandard + "|" + fontFamily;
+    const divider = oldImport === "" ? "" : "|";
+    const newImport = oldImport + divider + fontFamily;
+    const newStandard = oldStandard + divider + fontFamily;
     const newImportFams = `@import url('https://fonts.googleapis.com/css?family=${newImport}&display=swap')`;
     const newStandardFams = `<link href='https://fonts.googleapis.com/css?family=${newStandard}&display=swap' rel='stylesheet'>`;
     this.setState({

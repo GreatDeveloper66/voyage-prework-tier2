@@ -24,13 +24,18 @@ class App extends Component {
       numFonts: 0,
       filter: null,
       currentSearch: "",
-      fontsDisplayed: []
+      fontsDisplayed: [],
+      importFontsChosen: "",
+      standardFontsChosen: "",
+      importString: "",
+      standardString: ""
     }
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleFontChange = this.handleFontChange.bind(this);
     this.handleFamilyChange = this.handleFamilyChange.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.addFontsChosen = this.addFontsChosen.bind(this);
   }
   handleTextChange(event) {
     event.preventDefault();
@@ -82,6 +87,23 @@ class App extends Component {
       numCurrentDisplay: curr + addNum
     });
   }
+
+  addFontsChosen(fontFamily){
+    window.alert('clicked');
+    const oldImport = this.state.importFontsChosen;
+    const oldStandard = this.state.standardFontsChosen;
+    const newImport = oldImport + "|" + fontFamily;
+    const newStandard = oldStandard + "|" + fontFamily;
+    const newImportFams = `@import url('https://fonts.googleapis.com/css?family=${newImport}&display=swap')`;
+    const newStandardFams = `<link href='https://fonts.googleapis.com/css?family=${newStandard}&display=swap' rel='stylesheet'>`;
+    this.setState({
+        importFontsChosen: newImport,
+        standardFontsChosen: newStandard,
+        importString: newImportFams,
+        standardString: newStandardFams
+    });
+  }
+
 
   componentDidMount() {
     fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCjVPlNgusY2WdI0-pw303Rt-rIf6YYAVw&sort=popularity").then(res => res.json()).then((result) => {
@@ -151,7 +173,7 @@ class App extends Component {
         fontSize={this.state.fontSize} fontFamilies={this.state.fontFamilies} filter={this.state.filter}
         numCurrentDisplay={this.state.numCurrentDisplay} handleFamilyChange={this.handleFamilyChange}
         handleReset={this.handleReset} handleSubmit={this.handleSubmit}
-        currentSearch={this.state.currentSearch}/>
+        currentSearch={this.state.currentSearch} addFontsChosen={this.addFontsChosen}/>
       <Featured/>
       <Articles/>
       <About/>
@@ -160,11 +182,11 @@ class App extends Component {
     <div id="fontsChosen">
       <div class="inputRow">
       <label>@import</label>
-      <input type="text" value=""></input>
+      <input type="text" value={this.state.importString}></input>
       </div>
       <div class="inputRow">
       <label>standard</label>
-      <input type="text" value=""></input>
+      <input type="text" value={this.state.standardString}></input>
       </div>
     </div>
 
@@ -200,7 +222,7 @@ class Catalog extends React.Component {
       <h1>Catalog</h1>
 
       <div className="cardGrid">
-        <CardGrid fontFamilies={fontFamiliesFiltered(this.props.fontFamilies, this.props.filter, this.props.numCurrentDisplay)} fontSize={this.props.fontSize} sampleText={this.props.sampleText}/>
+        <CardGrid fontFamilies={fontFamiliesFiltered(this.props.fontFamilies, this.props.filter, this.props.numCurrentDisplay)} fontSize={this.props.fontSize} sampleText={this.props.sampleText} addFontsChosen={this.props.addFontsChosen}/>
       </div>
       <button type="submit" onClick={this.props.handleSubmit}>More</button>
     </div>);
@@ -224,7 +246,7 @@ const CardGrid = (props) => {
   const Families = props.fontFamilies;
   const Size = props.fontSize;
   const Text = props.sampleText;
-  const Cards = Families.map((fam, index) => <Card fontSize={Size} fontFamily={fam} sampleText={Text} key={index}/>);
+  const Cards = Families.map((fam, index) => <Card fontSize={Size} fontFamily={fam} sampleText={Text} key={index} addFontsChosen={props.addFontsChosen}/>);
   return (Cards);
 };
 
@@ -235,7 +257,7 @@ class Card extends React.Component {
       }}>
       <div className="topCardRow">
         <p>{this.props.fontFamily}</p>
-        <button data-toggle="tooltip" data-placement="top" title="Add font family">
+        <button data-toggle="tooltip" data-placement="top" title="Add font family" onClick={() => {this.props.addFontsChosen(this.props.fontFamily)}}>
           <i className="fas fa-plus-circle"></i>
         </button>
       </div>

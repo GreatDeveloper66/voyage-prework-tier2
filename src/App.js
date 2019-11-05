@@ -148,7 +148,8 @@ class App extends Component {
         handleTextChange={this.handleTextChange} handleFontChange={this.handleFontChange}
         fontSize={this.state.fontSize} fontFamilies={this.state.fontFamilies} filter={this.state.filter}
         numCurrentDisplay={this.state.numCurrentDisplay} handleFamilyChange={this.handleFamilyChange}
-        handleReset={this.handleReset} handleSubmit={this.handleSubmit} />
+        handleReset={this.handleReset} handleSubmit={this.handleSubmit}
+        currentSearch={this.state.currentSearch}/>
       <Featured/>
       <Articles/>
       <About/>

@@ -1,5 +1,4 @@
 @import url('fontawesome-free-5.11.2-web/css/all.min.css');
-
 @mixin displaygrid($gridtemplate, $justifyitems: center, $alignitems: center, $margin: 2px,$padding: 2px,$height: auto,$width: auto) {
 	display: grid;
 	grid-template: $gridtemplate;
@@ -10,11 +9,12 @@
 	height: $height;
 	width: $width;
 }
-@mixin fonts($fontfamily,$fontsize,$color){
+@mixin fonts($fontfamily,$fontsize,$color) {
 	font-family: $fontfamily;
 	font-size: $fontsize;
 	color: $color;
 }
+
 html {
 	scroll-behavior: smooth;
 }
@@ -42,17 +42,21 @@ button {
 	border: 1px solid lightgrey;
 	border-radius: 6px;
 	box-shadow: 3px 3px darkgrey;
+
 	&:hover {
 		cursor: pointer;
 	}
 }
 
-input, select {
+input,
+select {
 	height: 40px;
 	margin-right: 10px;
 }
+
 input {
 	width: auto;
+
 	&::placeholder {
 		@include fonts("'Roboto','sans-serif'",15px,black);
 		font-weight: bold;
@@ -68,114 +72,128 @@ body {
 	#root {
 		@include displaygrid(1fr/1fr,center,center,2px,2px,100%,100%);
 
-		.App {
-			@include displaygrid(auto auto auto auto/auto, center,center,2px,2px, auto, 90%);
-			max-width: 1000px;
+		.appContainer {
+			@include displaygrid(1fr/1fr,center,center,2px,2px,100%,100%);
+			border: 3px solid red;
 
-			.mainRow {
-				@include displaygrid(auto/1fr 5fr, center, center, 2px,2px, auto, 100%);
-				text-transform: uppercase;
+			.App {
+				@include displaygrid(auto auto auto auto/auto, center,center,2px,2px, auto, 90%);
+				max-width: 1000px;
 
-				.iconTitle {
-					@include displaygrid(1fr/1fr);
-				}
+				.mainRow {
+					@include displaygrid(auto/1fr 5fr, center, center, 2px,2px, auto, 100%);
+					text-transform: uppercase;
 
-				.topMenu {
-					@include displaygrid(auto/1fr repeat(4,auto),end,center,2px,2px,100%,100%);
+					.iconTitle {
+						@include displaygrid(1fr/1fr);
+					}
 
-				}
-			}
-
-			.Catalog {
-				@include displaygrid(auto auto auto/1fr, center, center, 2px, 2px auto, 100%);
-
-				.underMenu {
-					@include displaygrid(auto/auto auto 1fr auto auto, space-around,center,2px,2px,auto,100%);
-
-					.instructions {
-						@include fonts("'Roboto','sans-serif'", 25px, black);
-						text-transform: uppercase;
-						text-align: center;
-						display: none;
+					.topMenu {
+						@include displaygrid(auto/1fr repeat(4,auto),end,center,2px,2px,100%,100%);
 					}
 				}
 
-				.cardGrid {
-					display: grid;
-					grid-template-columns: 330px;
-					grid-template-rows: repeat(auto-fill,auto);
-					justify-items: center;
-					align-items: center;
-					width: 100%;
+				.Catalog {
+					@include displaygrid(auto auto auto/1fr, center, center, 2px, 2px auto, 100%);
 
-					.card {
-						@include displaygrid(35px auto/1fr, center, center, 2px, 2px, auto, 250px);
-						overflow-x: hidden;
-						overflow-y: hidden;
-						min-height: 250px;
-						border: 1px solid grey;
-						box-shadow: 5px 5px 3px 3px grey;
+					.underMenu {
+						@include displaygrid(auto/auto auto 1fr auto auto, space-around,center,2px,2px,auto,100%);
 
-						.topCardRow {
-							@include displaygrid(1fr/1fr 30px, start, center, 3px, 3px, 100%,100%);
-							border-bottom: 2px solid grey;
-							button {
-								width: 20px;
-								height: 20px;
-								border-radius: 50%;
+						.instructions {
+							@include fonts("'Roboto','sans-serif'", 25px, black);
+							text-transform: uppercase;
+							text-align: center;
+							display: none;
+						}
+					}
+
+					.cardGrid {
+						display: grid;
+						grid-template-columns: 330px;
+						grid-template-rows: repeat(auto-fill,auto);
+						justify-items: center;
+						align-items: center;
+						width: 100%;
+
+						.card {
+							@include displaygrid(35px auto/1fr, center, center, 2px, 2px, auto, 250px);
+							overflow-x: hidden;
+							overflow-y: hidden;
+							min-height: 250px;
+							border: 1px solid grey;
+							box-shadow: 5px 5px 3px 3px grey;
+
+							.topCardRow {
+								@include displaygrid(1fr/1fr 30px, start, center, 3px, 3px, 100%,100%);
+								border-bottom: 2px solid grey;
+
+								button {
+									width: 20px;
+									height: 20px;
+									border-radius: 50%;
+								}
 							}
 
+							.cardBody {
+								@include displaygrid(1fr/1fr, center, center, 2px, 2px, 100%, 100%);
+							}
+						}
+					}
+				}
+
+				.About,
+				.Articles,
+				.Featured {
+					display: none;
+				}
+
+				.About {
+					h2 {
+						@include fonts("'Roboto','sans-serif'",30px,black);
+						border-bottom: 2px solid grey;
+					}
+				}
+
+				.Articles,
+				.Featured {
+					h2 {
+						@include fonts("'Lato','sans-serif'",35px,darkgrey);
+						border-bottom: 2px solid grey;
+					}
+
+					.articleRow,
+					.featuredRow {
+						font-family: 'Roboto Condensed', 'sans-serif';
+						text-align: left;
+						color: grey;
+						margin-bottom: 15px;
+						border-bottom: 2px solid lightgrey;
+
+						.FeaturedTitle,
+						.articleTitle {
+							font-size: 25px;
+							color: black;
 						}
 
-						.cardBody {
-							@include displaygrid(1fr/1fr, center, center, 2px, 2px, 100%, 100%);
+						.articleDescription,
+						.featuredDescription {
+							font-size: 20px;
+						}
+
+						.featuredCreated,
+						.type {
+							h3 {
+								font-size: 24px;
+							}
+							font-size: 18px;
+							font-style: italic;
 						}
 					}
 				}
-			}
 
-			.About,
-			.Articles,
-			.Featured {
-				display: none;
-			}
-			.About {
-				h2 {
-					@include fonts("'Roboto','sans-serif'",30px,black);
-					border-bottom: 2px solid grey;
+				.footer {
+					@include displaygrid(1fr/1fr,center,center,2px,2px,auto,100%);
 				}
-
-			}
-
-			.Articles, .Featured {
-				h2 {
-					@include fonts("'Lato','sans-serif'",35px,darkgrey);
-					border-bottom: 2px solid grey;
-				}
-				.articleRow,.featuredRow {
-					font-family: 'Roboto Condensed', 'sans-serif';
-					text-align: left;
-					color: grey;
-					margin-bottom: 15px;
-					border-bottom: 2px solid lightgrey;
-					.articleTitle,.FeaturedTitle {
-						font-size: 25px;
-						color: black;
-					}
-					.articleDescription,.featuredDescription {
-						font-size: 20px;
-					}
-					.type, .featuredCreated {
-						h3 {
-							font-size: 24px;
-						}
-						font-size: 18px;
-						font-style: italic;
-					}
-				}
-			}
-			.footer {
-				@include displaygrid(1fr/1fr,center,center,2px,2px,auto,100%);
 			}
 		}
 	}
@@ -188,15 +206,24 @@ body {
 		background-size: contain;
 		bottom: 80px;
 		right: 20px;
+
 		&:hover {
 			cursor: pointer;
 		}
 	}
 
+	input#fontsChosen {
+		position: fixed;
+		bottom: 10px;
+		right: 50%;
+		width: 450px;
+		height: 50px;
+	}
 }
 @media only screen and (min-width: 530px) {
-	  body {
-			#root {
+	body {
+		#root {
+			.appContainer {
 				.App {
 					.Catalog {
 						.cardGrid {
@@ -207,18 +234,21 @@ body {
 			}
 		}
 	}
-
+}
 @media only screen and (min-width: 768px) {
 	body {
 		#root {
-			.App {
-				.Catalog {
-					.cardGrid {
-						grid-template-columns: repeat(3,330px);
-					}
-					.underMenu {
-						.instructions {
-							display: grid;
+			.appContainer {
+				.App {
+					.Catalog {
+						.cardGrid {
+							grid-template-columns: repeat(3,330px);
+						}
+
+						.underMenu {
+							.instructions {
+								display: grid;
+							}
 						}
 					}
 				}

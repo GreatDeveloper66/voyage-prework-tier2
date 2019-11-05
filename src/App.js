@@ -116,7 +116,9 @@ class App extends Component {
   }
 
   render() {
-    return (<div className="App">
+    return (
+      <div className="appContainer">
+      <div className="App">
       <div className="mainRow">
         <div className="iconTitle">
           Google Fonts
@@ -154,7 +156,10 @@ class App extends Component {
       <Articles/>
       <About/>
       <footer className="footer">Google Font API coded by Adam Shaffer</footer>
-    </div>);
+    </div>
+    <input id="fontsChosen" type="text" value="font links" placeholder="font links"></input>
+  </div>
+  );
   }
 }
 

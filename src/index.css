@@ -36,12 +36,12 @@ button {
   border-radius: 6px;
   box-shadow: 3px 3px darkgrey;
 }
-
 button:hover {
   cursor: pointer;
 }
 
-input, select {
+input,
+select {
   height: 40px;
   margin-right: 10px;
 }
@@ -49,7 +49,6 @@ input, select {
 input {
   width: auto;
 }
-
 input::placeholder {
   font-family: "'Roboto','sans-serif'";
   font-size: 15px;
@@ -68,7 +67,6 @@ body {
   width: 100%;
   background-color: #FFFFFF;
 }
-
 body #root {
   display: grid;
   grid-template: 1;
@@ -79,8 +77,18 @@ body #root {
   height: 100%;
   width: 100%;
 }
-
-body #root .App {
+body #root .appContainer {
+  display: grid;
+  grid-template: 1;
+  justify-items: center;
+  align-items: center;
+  margin: 2px;
+  padding: 2px;
+  height: 100%;
+  width: 100%;
+  border: 3px solid red;
+}
+body #root .appContainer .App {
   display: grid;
   grid-template: auto auto auto auto/auto;
   justify-items: center;
@@ -91,8 +99,7 @@ body #root .App {
   width: 90%;
   max-width: 1000px;
 }
-
-body #root .App .mainRow {
+body #root .appContainer .App .mainRow {
   display: grid;
   grid-template: auto/1fr 5fr;
   justify-items: center;
@@ -103,8 +110,7 @@ body #root .App .mainRow {
   width: 100%;
   text-transform: uppercase;
 }
-
-body #root .App .mainRow .iconTitle {
+body #root .appContainer .App .mainRow .iconTitle {
   display: grid;
   grid-template: 1;
   justify-items: center;
@@ -114,8 +120,7 @@ body #root .App .mainRow .iconTitle {
   height: auto;
   width: auto;
 }
-
-body #root .App .mainRow .topMenu {
+body #root .appContainer .App .mainRow .topMenu {
   display: grid;
   grid-template: auto/1fr repeat(4, auto);
   justify-items: end;
@@ -125,8 +130,7 @@ body #root .App .mainRow .topMenu {
   height: 100%;
   width: 100%;
 }
-
-body #root .App .Catalog {
+body #root .appContainer .App .Catalog {
   display: grid;
   grid-template: auto auto auto/1fr;
   justify-items: center;
@@ -136,8 +140,7 @@ body #root .App .Catalog {
   height: 100%;
   width: auto;
 }
-
-body #root .App .Catalog .underMenu {
+body #root .appContainer .App .Catalog .underMenu {
   display: grid;
   grid-template: auto/auto auto 1fr auto auto;
   justify-items: space-around;
@@ -147,8 +150,7 @@ body #root .App .Catalog .underMenu {
   height: auto;
   width: 100%;
 }
-
-body #root .App .Catalog .underMenu .instructions {
+body #root .appContainer .App .Catalog .underMenu .instructions {
   font-family: "'Roboto','sans-serif'";
   font-size: 25px;
   color: black;
@@ -156,8 +158,7 @@ body #root .App .Catalog .underMenu .instructions {
   text-align: center;
   display: none;
 }
-
-body #root .App .Catalog .cardGrid {
+body #root .appContainer .App .Catalog .cardGrid {
   display: grid;
   grid-template-columns: 330px;
   grid-template-rows: repeat(auto-fill, auto);
@@ -165,8 +166,7 @@ body #root .App .Catalog .cardGrid {
   align-items: center;
   width: 100%;
 }
-
-body #root .App .Catalog .cardGrid .card {
+body #root .appContainer .App .Catalog .cardGrid .card {
   display: grid;
   grid-template: 35px auto/1fr;
   justify-items: center;
@@ -181,8 +181,7 @@ body #root .App .Catalog .cardGrid .card {
   border: 1px solid grey;
   box-shadow: 5px 5px 3px 3px grey;
 }
-
-body #root .App .Catalog .cardGrid .card .topCardRow {
+body #root .appContainer .App .Catalog .cardGrid .card .topCardRow {
   display: grid;
   grid-template: 1fr/1fr 30px;
   justify-items: start;
@@ -193,14 +192,12 @@ body #root .App .Catalog .cardGrid .card .topCardRow {
   width: 100%;
   border-bottom: 2px solid grey;
 }
-
-body #root .App .Catalog .cardGrid .card .topCardRow button {
+body #root .appContainer .App .Catalog .cardGrid .card .topCardRow button {
   width: 20px;
   height: 20px;
   border-radius: 50%;
 }
-
-body #root .App .Catalog .cardGrid .card .cardBody {
+body #root .appContainer .App .Catalog .cardGrid .card .cardBody {
   display: grid;
   grid-template: 1;
   justify-items: center;
@@ -210,54 +207,77 @@ body #root .App .Catalog .cardGrid .card .cardBody {
   height: 100%;
   width: 100%;
 }
-
-body #root .App .About,
-body #root .App .Articles,
-body #root .App .Featured {
+body #root .appContainer .App .About,
+body #root .appContainer .App .Articles,
+body #root .appContainer .App .Featured {
   display: none;
 }
-
-body #root .App .About h2 {
+body #root .appContainer .App .About h2 {
   font-family: "'Roboto','sans-serif'";
   font-size: 30px;
   color: black;
   border-bottom: 2px solid grey;
 }
-
-body #root .App .Articles h2, body #root .App .Featured h2 {
+body #root .appContainer .App .Articles h2,
+body #root .appContainer .App .Featured h2 {
   font-family: "'Lato','sans-serif'";
   font-size: 35px;
   color: darkgrey;
   border-bottom: 2px solid grey;
 }
-
-body #root .App .Articles .articleRow, body #root .App .Articles .featuredRow, body #root .App .Featured .articleRow, body #root .App .Featured .featuredRow {
+body #root .appContainer .App .Articles .articleRow,
+body #root .appContainer .App .Articles .featuredRow,
+body #root .appContainer .App .Featured .articleRow,
+body #root .appContainer .App .Featured .featuredRow {
   font-family: 'Roboto Condensed', 'sans-serif';
   text-align: left;
   color: grey;
   margin-bottom: 15px;
   border-bottom: 2px solid lightgrey;
 }
-
-body #root .App .Articles .articleRow .articleTitle, body #root .App .Articles .articleRow .FeaturedTitle, body #root .App .Articles .featuredRow .articleTitle, body #root .App .Articles .featuredRow .FeaturedTitle, body #root .App .Featured .articleRow .articleTitle, body #root .App .Featured .articleRow .FeaturedTitle, body #root .App .Featured .featuredRow .articleTitle, body #root .App .Featured .featuredRow .FeaturedTitle {
+body #root .appContainer .App .Articles .articleRow .FeaturedTitle,
+body #root .appContainer .App .Articles .articleRow .articleTitle,
+body #root .appContainer .App .Articles .featuredRow .FeaturedTitle,
+body #root .appContainer .App .Articles .featuredRow .articleTitle,
+body #root .appContainer .App .Featured .articleRow .FeaturedTitle,
+body #root .appContainer .App .Featured .articleRow .articleTitle,
+body #root .appContainer .App .Featured .featuredRow .FeaturedTitle,
+body #root .appContainer .App .Featured .featuredRow .articleTitle {
   font-size: 25px;
   color: black;
 }
-
-body #root .App .Articles .articleRow .articleDescription, body #root .App .Articles .articleRow .featuredDescription, body #root .App .Articles .featuredRow .articleDescription, body #root .App .Articles .featuredRow .featuredDescription, body #root .App .Featured .articleRow .articleDescription, body #root .App .Featured .articleRow .featuredDescription, body #root .App .Featured .featuredRow .articleDescription, body #root .App .Featured .featuredRow .featuredDescription {
+body #root .appContainer .App .Articles .articleRow .articleDescription,
+body #root .appContainer .App .Articles .articleRow .featuredDescription,
+body #root .appContainer .App .Articles .featuredRow .articleDescription,
+body #root .appContainer .App .Articles .featuredRow .featuredDescription,
+body #root .appContainer .App .Featured .articleRow .articleDescription,
+body #root .appContainer .App .Featured .articleRow .featuredDescription,
+body #root .appContainer .App .Featured .featuredRow .articleDescription,
+body #root .appContainer .App .Featured .featuredRow .featuredDescription {
   font-size: 20px;
 }
-
-body #root .App .Articles .articleRow .type, body #root .App .Articles .articleRow .featuredCreated, body #root .App .Articles .featuredRow .type, body #root .App .Articles .featuredRow .featuredCreated, body #root .App .Featured .articleRow .type, body #root .App .Featured .articleRow .featuredCreated, body #root .App .Featured .featuredRow .type, body #root .App .Featured .featuredRow .featuredCreated {
+body #root .appContainer .App .Articles .articleRow .featuredCreated,
+body #root .appContainer .App .Articles .articleRow .type,
+body #root .appContainer .App .Articles .featuredRow .featuredCreated,
+body #root .appContainer .App .Articles .featuredRow .type,
+body #root .appContainer .App .Featured .articleRow .featuredCreated,
+body #root .appContainer .App .Featured .articleRow .type,
+body #root .appContainer .App .Featured .featuredRow .featuredCreated,
+body #root .appContainer .App .Featured .featuredRow .type {
   font-size: 18px;
   font-style: italic;
 }
-
-body #root .App .Articles .articleRow .type h3, body #root .App .Articles .articleRow .featuredCreated h3, body #root .App .Articles .featuredRow .type h3, body #root .App .Articles .featuredRow .featuredCreated h3, body #root .App .Featured .articleRow .type h3, body #root .App .Featured .articleRow .featuredCreated h3, body #root .App .Featured .featuredRow .type h3, body #root .App .Featured .featuredRow .featuredCreated h3 {
+body #root .appContainer .App .Articles .articleRow .featuredCreated h3,
+body #root .appContainer .App .Articles .articleRow .type h3,
+body #root .appContainer .App .Articles .featuredRow .featuredCreated h3,
+body #root .appContainer .App .Articles .featuredRow .type h3,
+body #root .appContainer .App .Featured .articleRow .featuredCreated h3,
+body #root .appContainer .App .Featured .articleRow .type h3,
+body #root .appContainer .App .Featured .featuredRow .featuredCreated h3,
+body #root .appContainer .App .Featured .featuredRow .type h3 {
   font-size: 24px;
 }
-
-body #root .App .footer {
+body #root .appContainer .App .footer {
   display: grid;
   grid-template: 1;
   justify-items: center;
@@ -267,7 +287,6 @@ body #root .App .footer {
   height: auto;
   width: 100%;
 }
-
 body button#slider {
   position: fixed;
   width: 39px;
@@ -277,22 +296,27 @@ body button#slider {
   bottom: 80px;
   right: 20px;
 }
-
 body button#slider:hover {
   cursor: pointer;
 }
+body input#fontsChosen {
+  position: fixed;
+  bottom: 10px;
+  right: 50%;
+  width: 450px;
+  height: 50px;
+}
 
 @media only screen and (min-width: 530px) {
-  body #root .App .Catalog .cardGrid {
+  body #root .appContainer .App .Catalog .cardGrid {
     grid-template-columns: repeat(2, 330px);
   }
 }
-
 @media only screen and (min-width: 768px) {
-  body #root .App .Catalog .cardGrid {
+  body #root .appContainer .App .Catalog .cardGrid {
     grid-template-columns: repeat(3, 330px);
   }
-  body #root .App .Catalog .underMenu .instructions {
+  body #root .appContainer .App .Catalog .underMenu .instructions {
     display: grid;
   }
 }

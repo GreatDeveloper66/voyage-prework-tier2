@@ -17,9 +17,11 @@ class App extends Component {
     super(props);
     this.state = {
       sampleText: currentSample(),
-      currentCustomSample: ''
+      currentCustomSample: '',
+      fontSize: 15
     }
     this.handleTextChange = this.handleTextChange.bind(this);
+    this.handleFontChange = this.handleFontChange.bind(this);
   }
   handleTextChange(event) {
     event.preventDefault();
@@ -28,6 +30,13 @@ class App extends Component {
       : event.target.value;
     const newSample = event.target.value;
     this.setState({sampleText: newText, currentCustomSample: newSample});
+  }
+
+  handleFontChange(event) {
+    event.preventDefault();
+    this.setState({
+      fontSize: parseInt(event.target.value)
+    });
   }
 
   componentDidMount() {
@@ -85,7 +94,7 @@ class App extends Component {
           </div>
         </div>
       </div>
-      <Catalog sampleText={this.state.sampleText} currentCustomSample={this.state.currentCustomSample} handleTextChange={this.handleTextChange}/>
+      <Catalog sampleText={this.state.sampleText} currentCustomSample={this.state.currentCustomSample} handleTextChange={this.handleTextChange} handleFontChange={this.handleFontChange} fontSize={this.state.fontSize}/>
       <Featured/>
       <Articles/>
       <About/>
@@ -99,14 +108,13 @@ class Catalog extends React.Component {
     super(props);
     this.state = {
       fontFamilies: [],
-      fontSize: 15,
       numCurrentDisplay: 0,
       numFonts: 0,
       filter: null,
       currentSearch: "",
       fontsDisplayed: []
     };
-    this.handleFontChange = this.handleFontChange.bind(this);
+
     this.handleFamilyChange = this.handleFamilyChange.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -121,12 +129,6 @@ class Catalog extends React.Component {
     })
   }
 
-  handleFontChange(event) {
-    event.preventDefault();
-    this.setState({
-      fontSize: parseInt(event.target.value)
-    });
-  }
   handleFamilyChange(event) {
     event.preventDefault();
     const str = event.target.value;
@@ -171,7 +173,7 @@ class Catalog extends React.Component {
         <div className="instructions">
           Pick a font and choose a font size
         </div>
-        <select name="fontSizes" onChange={this.handleFontChange} value={this.state.fontSize}>
+        <select name="fontSizes" onChange={this.props.handleFontChange} value={this.props.fontSize}>
           <option value="5">5px</option>
           <option value="10">10px</option>
           <option value="15">15px</option>
@@ -183,7 +185,7 @@ class Catalog extends React.Component {
       <h1>Catalog</h1>
 
       <div className="cardGrid">
-        <CardGrid fontFamilies={fontFamiliesFiltered(this.state.fontFamilies, this.state.filter, this.state.numCurrentDisplay)} fontSize={this.state.fontSize} sampleText={this.props.sampleText}/>
+        <CardGrid fontFamilies={fontFamiliesFiltered(this.state.fontFamilies, this.state.filter, this.state.numCurrentDisplay)} fontSize={this.props.fontSize} sampleText={this.props.sampleText}/>
       </div>
       <button type="submit" onClick={this.handleSubmit}>More</button>
     </div>);

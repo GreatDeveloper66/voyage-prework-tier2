@@ -13,6 +13,22 @@ const currentSample = () => `Lorem ipsum dolor sit amet,
             quam pellentesque nec nam.`;
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sampleText: currentSample(),
+      currentCustomSample: ''
+    }
+    this.handleTextChange = this.handleTextChange.bind(this);
+  }
+  handleTextChange(event) {
+    event.preventDefault();
+    const newText = event.target.value === ""
+      ? currentSample()
+      : event.target.value;
+    const newSample = event.target.value;
+    this.setState({sampleText: newText, currentCustomSample: newSample});
+  }
 
   componentDidMount() {
     const catalog = document.getElementById('catalog');
@@ -69,7 +85,7 @@ class App extends Component {
           </div>
         </div>
       </div>
-      <Catalog />
+      <Catalog sampleText={this.state.sampleText} currentCustomSample={this.state.currentCustomSample} handleTextChange={this.handleTextChange}/>
       <Featured/>
       <Articles/>
       <About/>
@@ -83,43 +99,28 @@ class Catalog extends React.Component {
     super(props);
     this.state = {
       fontFamilies: [],
-      sampleText: currentSample(),
       fontSize: 15,
       numCurrentDisplay: 0,
       numFonts: 0,
       filter: null,
       currentSearch: "",
-      currentCustomSample: "",
       fontsDisplayed: []
     };
-    this.handleTextChange = this.handleTextChange.bind(this);
     this.handleFontChange = this.handleFontChange.bind(this);
     this.handleFamilyChange = this.handleFamilyChange.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
-componentDidMount() {
-  fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCjVPlNgusY2WdI0-pw303Rt-rIf6YYAVw&sort=popularity").then(res => res.json()).then((result) => {
-    let fontArr = result.items.map(elem => elem.family.replace(/ /g, "+"));
-    this.setState({
-      fontFamilies: fontArr,
-      numCurrentDisplay: 6,
-      numFonts: fontArr.length
-    });
-  }, (error) => {
-    this.setState({data: "Didn't Work"});
-  })
-}
-  handleTextChange(event) {
-    event.preventDefault();
-    const newText = event.target.value === ""
-      ? currentSample()
-      : event.target.value;
-      const newSample = event.target.value;
-    this.setState({sampleText: newText, currentCustomSample: newSample});
+  componentDidMount() {
+    fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCjVPlNgusY2WdI0-pw303Rt-rIf6YYAVw&sort=popularity").then(res => res.json()).then((result) => {
+      let fontArr = result.items.map(elem => elem.family.replace(/ /g, "+"));
+      this.setState({fontFamilies: fontArr, numCurrentDisplay: 6, numFonts: fontArr.length});
+    }, (error) => {
+      this.setState({data: "Didn't Work"});
+    })
   }
+
   handleFontChange(event) {
     event.preventDefault();
     this.setState({
@@ -136,28 +137,37 @@ componentDidMount() {
   }
   handleReset(event) {
     event.preventDefault();
-    this.setState({filter: null,
+    this.setState({
+      filter: null,
       currentSearch: "",
       currentCustomSample: "",
       sampleText: currentSample(),
       numCurrentDisplay: 6,
-      fontSize: 15});
+      fontSize: 15
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const curr = this.state.numCurrentDisplay;
     const total = this.state.numFonts;
-    const addNum = curr < total ? (total - curr < 6 ? total - curr : 6) : 0;
-    this.setState({numCurrentDisplay: curr + addNum});
+    const addNum = curr < total
+      ? (
+        total - curr < 6
+        ? total - curr
+        : 6)
+      : 0;
+    this.setState({
+      numCurrentDisplay: curr + addNum
+    });
   }
 
   render() {
     return (<div className="Catalog">
-    <Link fontFamilies={this.state.fontFamilies} />
+      <Link fontFamilies={this.state.fontFamilies}/>
       <div className="underMenu">
         <input type="search" placeholder="search fonts" onChange={this.handleFamilyChange} value={this.state.currentSearch}></input>
-       <input type="search" placeholder="sample text" onChange={this.handleTextChange} value={this.state.currentCustomSample}></input>
+        <input type="search" placeholder="sample text" onChange={this.props.handleTextChange} value={this.props.currentCustomSample}></input>
         <div className="instructions">
           Pick a font and choose a font size
         </div>
@@ -173,9 +183,9 @@ componentDidMount() {
       <h1>Catalog</h1>
 
       <div className="cardGrid">
-        <CardGrid fontFamilies={fontFamiliesFiltered(this.state.fontFamilies, this.state.filter,this.state.numCurrentDisplay)} fontSize={this.state.fontSize} sampleText={this.state.sampleText}/>
+        <CardGrid fontFamilies={fontFamiliesFiltered(this.state.fontFamilies, this.state.filter, this.state.numCurrentDisplay)} fontSize={this.state.fontSize} sampleText={this.props.sampleText}/>
       </div>
-     <button type="submit" onClick={this.handleSubmit}>More</button>
+      <button type="submit" onClick={this.handleSubmit}>More</button>
     </div>);
   }
 }
@@ -183,23 +193,21 @@ componentDidMount() {
 const Link = (props) => {
   const fontArr = props.fontFamilies;
   const fontStr = `https://fonts.googleapis.com/css?family=${fontArr.join('|')}&display=swap`;
-  return (<link href={fontStr} rel="stylesheet" type=
-  "text/css"/>);
+  return (<link href={fontStr} rel="stylesheet" type="text/css"/>);
 };
 
 const fontFamiliesFiltered = (fontFamilies, regExp, currentNum) => {
   if (regExp) {
-    return fontFamilies.filter(fam => regExp.test(fam)).slice(0,currentNum);
+    return fontFamilies.filter(fam => regExp.test(fam)).slice(0, currentNum);
   }
-  return fontFamilies.slice(0,currentNum);
+  return fontFamilies.slice(0, currentNum);
 };
 
 const CardGrid = (props) => {
   const Families = props.fontFamilies;
   const Size = props.fontSize;
   const Text = props.sampleText;
-  const Cards = Families.map((fam, index) =>
-  <Card fontSize={Size} fontFamily={fam} sampleText={Text} key={index}/>);
+  const Cards = Families.map((fam, index) => <Card fontSize={Size} fontFamily={fam} sampleText={Text} key={index}/>);
   return (Cards);
 };
 
@@ -210,9 +218,13 @@ class Card extends React.Component {
       }}>
       <div className="topCardRow">
         <p>{this.props.fontFamily}</p>
-        <button data-toggle="tooltip" data-placement="top" title="Add font family"><i className="fas fa-plus-circle"></i></button>
+        <button data-toggle="tooltip" data-placement="top" title="Add font family">
+          <i className="fas fa-plus-circle"></i>
+        </button>
       </div>
-      <div className="cardBody" style={{fontSize: this.props.fontSize}}>
+      <div className="cardBody" style={{
+          fontSize: this.props.fontSize
+        }}>
         {this.props.sampleText}
       </div>
     </div>);
@@ -228,34 +240,15 @@ class Featured extends React.Component {
           Featured Collection: Plex
         </div>
         <div className="featuredDescription">
-          IBM Plex™ is the new corporate typeface for IBM worldwide
-          and an open source project developed by the IBM Brand &
-          Experience team (BX&D). Plex is an international typeface
-          family designed to capture IBM’s brand spirit and history,
-          and to illustrate the unique relationship between mankind and
-          machine—a principal theme for IBM since the turn of the century.
-          The result is a neutral, yet friendly Grotesque style typeface that
-          balances design with the engineered details that make Plex™ distinctly IBM.
-          The family includes a Sans, Sans Condensed, Mono, and Serif and has excellent
-          legibility in print, web and mobile interfaces. Plex’s three designs work well
-          independently, and even better together. Use the Sans as a contemporary compadre,
-          the Serif for editorial storytelling, or the Mono to show code snippets. The
-          unexpectedly expressive nature of the italics give you even more options for your
-          designs.
+          IBM Plex™ is the new corporate typeface for IBM worldwide and an open source project developed by the IBM Brand & Experience team (BX&D). Plex is an international typeface family designed to capture IBM’s brand spirit and history, and to illustrate the unique relationship between mankind and machine—a principal theme for IBM since the turn of the century. The result is a neutral, yet friendly Grotesque style typeface that balances design with the engineered details that make Plex™ distinctly IBM. The family includes a Sans, Sans Condensed, Mono, and Serif and has excellent legibility in print, web and mobile interfaces. Plex’s three designs work well independently, and even better together. Use the Sans as a contemporary compadre, the Serif for editorial storytelling, or the Mono to show code snippets. The unexpectedly expressive nature of the italics give you even more options for your designs.
         </div>
         <div className="featuredCreated">
           <h3>
-            Created by <a href="https://ibm.com/design" target="_blank" rel="noopener noreferrer">IBM Brand Experience and Design</a>
+            Created by
+            <a href="https://ibm.com/design" target="_blank" rel="noopener noreferrer">IBM Brand Experience and Design</a>
           </h3>
           <p>
-            IBM Brand Experience & Design (BX&D) oversees the expression
-            and strategic evolution of every IBM
-            brand and sub-brand worldwide. Our work
-            crosses research and strategy, communications and
-            content development, symbology and systems, digital
-            and physical experiences, tools and training. Ultimately, BX&D
-            is here to make sure the role of the IBM brand is well understood
-            and well represented—across the globe and across every experience.
+            IBM Brand Experience & Design (BX&D) oversees the expression and strategic evolution of every IBM brand and sub-brand worldwide. Our work crosses research and strategy, communications and content development, symbology and systems, digital and physical experiences, tools and training. Ultimately, BX&D is here to make sure the role of the IBM brand is well understood and well represented—across the globe and across every experience.
           </p>
         </div>
       </div>
@@ -264,24 +257,15 @@ class Featured extends React.Component {
           Featured Collection: SuperFamilies
         </div>
         <div className="featuredDescription">
-        A superfamily is a set of typefaces—sans and serif designs for example,
-        or regular, slab, and rounded variations—that are crafted to work
-        together in close harmony. In contrast to pairing typefaces from
-        different font families, superfamilies are often used when more visual
-        cohesion is needed. UX designers might deploy a superfamily to delineate
-        UI text (menus, tooltips) from editorial content (headlines, body copy),
-        and to create a consistent tone with clear hierarchy, across an app or website.
+          A superfamily is a set of typefaces—sans and serif designs for example, or regular, slab, and rounded variations—that are crafted to work together in close harmony. In contrast to pairing typefaces from different font families, superfamilies are often used when more visual cohesion is needed. UX designers might deploy a superfamily to delineate UI text (menus, tooltips) from editorial content (headlines, body copy), and to create a consistent tone with clear hierarchy, across an app or website.
         </div>
         <div className="featuredCreated">
           <h3>
-            Created by <a href="https://design.google.com/" target="_blank" rel="noopener noreferrer">Google Design</a>
+            Created by
+            <a href="https://design.google.com/" target="_blank" rel="noopener noreferrer">Google Design</a>
           </h3>
           <p>
-            Google Design is a cooperative effort led by a group of
-            designers, writers and developers at Google. We work across
-            teams to create tools, resources, events and publications
-            that support and further design and technology both inside and
-            outside of Google.
+            Google Design is a cooperative effort led by a group of designers, writers and developers at Google. We work across teams to create tools, resources, events and publications that support and further design and technology both inside and outside of Google.
           </p>
         </div>
       </div>
@@ -290,24 +274,15 @@ class Featured extends React.Component {
           Featured Collection: 2016 Fonts Refresh
         </div>
         <div className="featuredDescription">
-        With the help of typeface designers and font engineers from
-        around the world, we started improving quality across our
-        collection in 2016. Design work focused on typefaces that are
-        widely used and have great potential, adding glyphs to support more
-        languages, fixing incorrectly placed or shaped accent marks,
-        re-spacing the type’s metrics and kerning, and in some cases
-        re-drawing the designs from scratch.
+          With the help of typeface designers and font engineers from around the world, we started improving quality across our collection in 2016. Design work focused on typefaces that are widely used and have great potential, adding glyphs to support more languages, fixing incorrectly placed or shaped accent marks, re-spacing the type’s metrics and kerning, and in some cases re-drawing the designs from scratch.
         </div>
         <div className="featuredCreated">
           <h3>
-            Created by <a href="https://design.google.com/" target="_blank" rel="noopener noreferrer">Google Design</a>
+            Created by
+            <a href="https://design.google.com/" target="_blank" rel="noopener noreferrer">Google Design</a>
           </h3>
           <p>
-            Google Design is a cooperative effort led by a group of
-            designers, writers and developers at Google. We work across
-            teams to create tools, resources, events and publications
-            that support and further design and technology both inside and
-            outside of Google.
+            Google Design is a cooperative effort led by a group of designers, writers and developers at Google. We work across teams to create tools, resources, events and publications that support and further design and technology both inside and outside of Google.
           </p>
         </div>
       </div>
@@ -322,41 +297,38 @@ class Articles extends React.Component {
       <div className="articleRow">
         <div className="articleTitle">
           <a href="https://design.google/library/hot-type-always-fresh/" target="_blank" rel="noopener noreferrer">
-          Hot Type, Always Fresh
-        </a>
+            Hot Type, Always Fresh
+          </a>
         </div>
         <div className="articleDescription">
-          Get to know how the Google Fonts API keeps your type up-to-date and increasingly
-          efficient
+          Get to know how the Google Fonts API keeps your type up-to-date and increasingly efficient
         </div>
         <div className="type">
           Editorial
         </div>
       </div>
-        <div className="articleRow">
-          <div className="articleTitle">
-            <a href="https://design.google/library/modernizing-arabic-typography-type-design/">
+      <div className="articleRow">
+        <div className="articleTitle">
+          <a href="https://design.google/library/modernizing-arabic-typography-type-design/">
             Modernizing Arabic Type for a Digital Audience
           </a>
-          </div>
-          <div className="articleDescription">
-            Designers are finally doing justice to the complex, contextual alphabet with
-            a fresh approach to Arabic fonts and digital typography.
-          </div>
-          <div className="type">
-            Editorial
-          </div>
+        </div>
+        <div className="articleDescription">
+          Designers are finally doing justice to the complex, contextual alphabet with a fresh approach to Arabic fonts and digital typography.
+        </div>
+        <div className="type">
+          Editorial
+        </div>
 
       </div>
       <div className="articleRow">
         <div className="articleTitle">
           <a href="https://design.google/library/new-wave-indian-type-design/" target="_blank" rel="noopener noreferrer">
-          The New Wave of Indian Type
-        </a>
+            The New Wave of Indian Type
+          </a>
         </div>
         <div className="articleDescription">
-          Studying the open source, collaborative work of Indian typographers, as a
-          model for global font design.
+          Studying the open source, collaborative work of Indian typographers, as a model for global font design.
         </div>
         <div className="type">
           Editorial
@@ -365,8 +337,8 @@ class Articles extends React.Component {
       <div className="articleRow">
         <div className="articleTitle">
           <a href="https://design.google/library/choosing-web-fonts-beginners-guide/">
-          Choosing Web Fonts: A Beginer's Guide
-        </a>
+            Choosing Web Fonts: A Beginer's Guide
+          </a>
         </div>
         <div className="articleDescription">
           Take the mystery of font selection with our step-by-step guidance
@@ -378,8 +350,8 @@ class Articles extends React.Component {
       <div className="articleRow">
         <div className="articleTitle">
           <a href="https://design.google/library/spectral-new-screen-first-typeface/">
-          Spectral: A New Screen-First TypeFace
-        </a>
+            Spectral: A New Screen-First TypeFace
+          </a>
         </div>
         <div className="articleDescription">
           Production Type introduces their latest commission for Google Fonts
@@ -391,12 +363,11 @@ class Articles extends React.Component {
       <div className="articleRow">
         <div className="articleTitle">
           <a href="https://design.google/library/scripting-cyrillic/">
-          Scripting Cyrillic
-        </a>
+            Scripting Cyrillic
+          </a>
         </div>
         <div className="articleDescription">
-          Highlighting the design process behind expanded language support in Google
-          Docs and Slides.
+          Highlighting the design process behind expanded language support in Google Docs and Slides.
         </div>
         <div className="type">
           Case Study
@@ -405,12 +376,11 @@ class Articles extends React.Component {
       <div className="articleRow">
         <div className="articleTitle">
           <a href="https://design.google/library/superfamilies/">
-          Superfamilies
-        </a>
+            Superfamilies
+          </a>
         </div>
         <div className="articleDescription">
-          Explore typefaces crafted to combine harmoniously, with this featured collection
-          on Google Fonts
+          Explore typefaces crafted to combine harmoniously, with this featured collection on Google Fonts
         </div>
         <div className="type">
           fonts.google.com
@@ -419,12 +389,11 @@ class Articles extends React.Component {
       <div className="articleRow">
         <div className="articleTitle">
           <a href="https://design.google/library/atypi-2017-montréal/">
-          ATypl 2017 Montreal
-        </a>
+            ATypl 2017 Montreal
+          </a>
         </div>
         <div className="articleDescription">
-          Watch talks by leading thinkers and practicioners in type design including
-          Paula Scher, Roger Black, Dan Rhatigan, and Santiago Orozco.
+          Watch talks by leading thinkers and practicioners in type design including Paula Scher, Roger Black, Dan Rhatigan, and Santiago Orozco.
         </div>
         <div className="type">
           www.youtube.com
@@ -433,12 +402,11 @@ class Articles extends React.Component {
       <div className="articleRow">
         <div className="articleTitle">
           <a href="https://design.google/library/android-developers-guide-better-typography/">
-          The Android Developer's Guide to Better Typography
-        </a>
+            The Android Developer's Guide to Better Typography
+          </a>
         </div>
         <div className="articleDescription">
-          Learn how to build an app with distinctive typography
-          using Android Studio's downloadable fonts feature
+          Learn how to build an app with distinctive typography using Android Studio's downloadable fonts feature
         </div>
         <div className="type">
           medium.com
@@ -447,12 +415,11 @@ class Articles extends React.Component {
       <div className="articleRow">
         <div className="articleTitle">
           <a href="https://design.google/library/introducing-space-mono/">
-          Space Mono's Retro-Future Voice
-        </a>
+            Space Mono's Retro-Future Voice
+          </a>
         </div>
         <div className="articleDescription">
-          The story behind a new monospaced typeface by
-          Colophon Foundry for Google Fonts
+          The story behind a new monospaced typeface by Colophon Foundry for Google Fonts
         </div>
         <div className="type">
           medium.com
@@ -461,13 +428,11 @@ class Articles extends React.Component {
       <div className="articleRow">
         <div className="articleTitle">
           <a href="https://design.google/library/reimagining-google-fonts/">
-          Reimagining Google Fonts
-        </a>
+            Reimagining Google Fonts
+          </a>
         </div>
         <div className="articleDescription">
-          The new Google Fonts make it easier than ever to browse
-          our collection of open source designer fonts and learn more about then
-          people who make them.
+          The new Google Fonts make it easier than ever to browse our collection of open source designer fonts and learn more about then people who make them.
         </div>
         <div className="type">
           Announcement
@@ -476,8 +441,8 @@ class Articles extends React.Component {
       <div className="articleRow">
         <div className="articleTitle">
           <a href="https://design.google/library/visit-google-fonts/">
-          Discover Great Typography
-        </a>
+            Discover Great Typography
+          </a>
         </div>
         <div className="articleDescription">
           Find and test out free, open source web fonts from the Google Fonts catalog
@@ -495,18 +460,13 @@ class About extends React.Component {
     return (<div className="About">
       <h2>About</h2>
       <p>
-        Google fonts is an excellent resources for web designers and developers.
-        Over 96 open source fonts are made available at the
-         <a href="https://fonts.google.com" target="_blank" rel="noopener noreferrer"> Google Fonts Site</a>
-        These fonts are contributions from highly skilled designers from around then
-        world. Google offers all the fonts in the catalog are free and open source.
+        Google fonts is an excellent resources for web designers and developers. Over 96 open source fonts are made available at the
+        <a href="https://fonts.google.com" target="_blank" rel="noopener noreferrer">
+          Google Fonts Site</a>
+        These fonts are contributions from highly skilled designers from around then world. Google offers all the fonts in the catalog are free and open source.
       </p>
       <p>
-        The app utilizes Google's API to present these fonts to you. The underlying
-        code utilizes HTML, CSS, SCSS and JavaScript. In addition, the React Library
-        handles rendering and presentation of UI elements. The current version of this
-        app is a simple beta version. Future updates will add more capabilities such as
-        font selection and more refined search abilities.
+        The app utilizes Google's API to present these fonts to you. The underlying code utilizes HTML, CSS, SCSS and JavaScript. In addition, the React Library handles rendering and presentation of UI elements. The current version of this app is a simple beta version. Future updates will add more capabilities such as font selection and more refined search abilities.
       </p>
     </div>);
   }

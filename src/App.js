@@ -144,6 +144,7 @@ class App extends Component {
   render() {
     return (
       <div className="appContainer">
+          <Link fontFamilies={this.state.fontFamilies}/>
       <div className="App">
       <div className="mainRow">
         <div className="iconTitle">
@@ -204,7 +205,7 @@ class Catalog extends React.Component {
 
   render() {
     return (<div className="Catalog">
-      <Link fontFamilies={this.props.fontFamilies}/>
+
       <div className="underMenu">
         <input type="search" placeholder="search fonts" onChange={this.props.handleFamilyChange} value={this.props.currentSearch}></input>
         <input type="search" placeholder="sample text" onChange={this.props.handleTextChange} value={this.props.currentCustomSample}></input>

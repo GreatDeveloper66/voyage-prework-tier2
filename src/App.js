@@ -184,11 +184,11 @@ class App extends Component {
       <footer className="footer">Google Font API coded by Adam Shaffer</footer>
     </div>
     <div id="fontsChosen">
-      <div class="inputRow">
+      <div className="inputRow">
       <label>@import</label>
       <input type="text" value={this.state.importString}></input>
       </div>
-      <div class="inputRow">
+      <div className="inputRow">
       <label>standard</label>
       <input type="text" value={this.state.standardString}></input>
       </div>
@@ -200,9 +200,6 @@ class App extends Component {
 }
 
 class Catalog extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
 
   render() {

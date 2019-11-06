@@ -186,11 +186,11 @@ class App extends Component {
     <div id="fontsChosen">
       <div className="inputRow">
       <label>@import</label>
-      <input type="text" value={this.state.importString}></input>
+      <input type="text" readOnly value={this.state.importString}></input>
       </div>
       <div className="inputRow">
       <label>standard</label>
-      <input type="text" value={this.state.standardString}></input>
+      <input type="text" readOnly value={this.state.standardString}></input>
       </div>
     </div>
 

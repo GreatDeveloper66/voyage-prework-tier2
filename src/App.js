@@ -113,18 +113,9 @@ class App extends Component {
     fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCjVPlNgusY2WdI0-pw303Rt-rIf6YYAVw&sort=popularity").then(res => res.json()).then((result) => {
       let fontArr = result.items.map(elem => elem.family.replace(/ /g, "+"));
       this.setState({fontFamilies: fontArr, numCurrentDisplay: 6, numFonts: fontArr.length});
-      const headElement = document.getElementsByTagName('head')[0];
-
       const fontArray = this.state.fontFamilies;
-      console.log(this.state.fontFamilies);
       const fontStr = `https://fonts.googleapis.com/css?family=${fontArray.join('|')}&display=swap`;
-      headElement.append('<link rel="stylesheet" type="text/css" href=' + fontStr +  '/>');
-
-
-      document.querySelector('head link[rel="stylesheet"]').setAttribute('href',fontStr);
-        console.log(document.querySelector('head link[rel="stylesheet"]'));
-
-      console.log(headElement);
+      document.querySelector('head link[type="text/css"]').setAttribute('href',fontStr);
     }, (error) => {
       this.setState({data: "Didn't Work"});
     })
@@ -238,16 +229,10 @@ class Catalog extends React.Component {
       <div className="cardGrid">
         <CardGrid fontFamilies={fontFamiliesFiltered(this.props.fontFamilies, this.props.filter, this.props.numCurrentDisplay)} fontSize={this.props.fontSize} sampleText={this.props.sampleText} addFontsChosen={this.props.addFontsChosen}/>
       </div>
-      <button type="submit" onClick={this.props.handleSubmit}>More</button>
+      <button type="submit" onClick={this.props.handleSubmit} id="more">More</button>
     </div>);
   }
 }
-
-const Link = (props) => {
-  const fontArr = props.fontFamilies;
-  const fontStr = `https://fonts.googleapis.com/css?family=${fontArr.join('|')}&display=swap`;
-  return (<link href={fontStr} rel="stylesheet" type="text/css"/>);
-};
 
 const fontFamiliesFiltered = (fontFamilies, regExp, currentNum) => {
   if (regExp) {

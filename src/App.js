@@ -113,9 +113,24 @@ class App extends Component {
     fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCjVPlNgusY2WdI0-pw303Rt-rIf6YYAVw&sort=popularity").then(res => res.json()).then((result) => {
       let fontArr = result.items.map(elem => elem.family.replace(/ /g, "+"));
       this.setState({fontFamilies: fontArr, numCurrentDisplay: 6, numFonts: fontArr.length});
+      const headElement = document.getElementsByTagName('head')[0];
+
+      const fontArray = this.state.fontFamilies;
+      console.log(this.state.fontFamilies);
+      const fontStr = `https://fonts.googleapis.com/css?family=${fontArray.join('|')}&display=swap`;
+      headElement.append('<link rel="stylesheet" type="text/css" href=' + fontStr +  '/>');
+
+
+      document.querySelector('head link[rel="stylesheet"]').setAttribute('href',fontStr);
+        console.log(document.querySelector('head link[rel="stylesheet"]'));
+
+      console.log(headElement);
     }, (error) => {
       this.setState({data: "Didn't Work"});
     })
+
+
+
     const catalog = document.getElementById('catalog');
     const features = document.getElementById('features');
     const articles = document.getElementById('articles');
@@ -144,7 +159,6 @@ class App extends Component {
   render() {
     return (
       <div className="appContainer">
-          <Link fontFamilies={this.state.fontFamilies}/>
       <div className="App">
       <div className="mainRow">
         <div className="iconTitle">
@@ -201,8 +215,6 @@ class App extends Component {
 }
 
 class Catalog extends React.Component {
-
-
   render() {
     return (<div className="Catalog">
 

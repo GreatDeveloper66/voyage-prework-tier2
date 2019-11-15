@@ -64,6 +64,10 @@ input::placeholder {
   font-weight: bold;
 }
 
+label {
+	margin-right: 15px;
+}
+
 body {
   display: grid;
   grid-template: auto/auto;

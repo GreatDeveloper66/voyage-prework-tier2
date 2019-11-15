@@ -163,7 +163,7 @@ class App extends Component {
           </div>
           <div className="menuItem">
             <button id="features">
-              features
+              featured
             </button>
           </div>
           <div className="menuItem">

@@ -47,13 +47,21 @@ button:hover {
   cursor: pointer;
 }
 
+label {
+  margin-right: 15px;
+}
+
 input,
 select {
-  height: 40px;
   margin-right: 10px;
 }
 
+select {
+  height: 30px;
+}
+
 input {
+  height: 40px;
   width: auto;
   border: 2px solid var(--inputBorderColor);
 }
@@ -62,10 +70,6 @@ input::placeholder {
   font-size: 15px;
   color: black;
   font-weight: bold;
-}
-
-label {
-	margin-right: 15px;
 }
 
 body {

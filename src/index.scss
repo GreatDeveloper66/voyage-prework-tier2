@@ -62,11 +62,15 @@ label {
 
 input,
 select {
-	height: 40px;
 	margin-right: 10px;
 }
 
+select {
+	height: 30px;
+}
+
 input {
+	height: 40px;
 	width: auto;
 	border: 2px solid var(--inputBorderColor);
 

@@ -245,7 +245,7 @@ const CardGrid = (props) => {
   const Families = props.fontFamilies;
   const Size = props.fontSize;
   const Text = props.sampleText;
-  const Cards = Families.map((fam, index) => <Card fontSize={Size} fontFamily={fam} sampleText={Text} key={index} addFontsChosen={props.addFontsChosen}/>);
+  const Cards = Families.map((fam, index) => <Card fontSize={Size} fontFamily={fam.replace(/\+/g,' ')} sampleText={Text} key={index} addFontsChosen={props.addFontsChosen}/>);
   return (Cards);
 };
 

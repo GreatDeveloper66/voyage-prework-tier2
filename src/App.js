@@ -121,34 +121,7 @@ class App extends Component {
     }, (error) => {
       this.setState({data: "Didn't Work"});
     })
-
-
-
-    const catalog = document.getElementById('catalog');
-    const features = document.getElementById('features');
-    const articles = document.getElementById('articles');
-    const about = document.getElementById('about');
-    const items = [".Catalog", ".Featured", ".Articles", ".About"].map(elem => document.querySelector(elem));
-    function reveal(i) {
-      items.forEach(elem => elem.style.display = "none");
-      items[i].style.display = "grid";
-    }
-
-    catalog.addEventListener("click", function() {
-      reveal(0);
-    });
-    features.addEventListener("click", function() {
-      reveal(1);
-    });
-    articles.addEventListener("click", function() {
-      reveal(2);
-    });
-    about.addEventListener("click", function() {
-      reveal(3);
-    });
-
   }
-
   render() {
     return (
       <div className="appContainer">
@@ -157,29 +130,9 @@ class App extends Component {
         <div className="iconTitle">
           Google Fonts
         </div>
-        <div className="topMenu">
-          <div className="menuItem">
-            <button id="catalog">
-              catalog
-            </button>
-          </div>
-          <div className="menuItem">
-            <button id="features">
-              featured
-            </button>
-          </div>
-          <div className="menuItem">
-            <button id="articles">
-              articles
-            </button>
-          </div>
-          <div className="menuItem">
-            <button id="about">
-              about
-            </button>
-          </div>
-        </div>
+        
       </div>
+	  
       <Catalog sampleText={this.state.sampleText} currentCustomSample={this.state.currentCustomSample}
         handleTextChange={this.handleTextChange} handleFontChange={this.handleFontChange}
         fontSize={this.state.fontSize} fontFamilies={this.state.fontFamilies} filter={this.state.filter}

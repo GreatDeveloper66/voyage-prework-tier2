@@ -73,6 +73,9 @@ input::placeholder {
 }
 
 body {
+  background-image: url('./images/samuel-ramos-nREufpxxM8o-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
   display: grid;
   grid-template: auto/auto;
   justify-items: center;

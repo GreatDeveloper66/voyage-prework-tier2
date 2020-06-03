@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Card from './Card'
+import FontCard from './FontCard'
 
 export default class CardGrid extends Component {
 	constructor(props){
@@ -8,7 +8,7 @@ export default class CardGrid extends Component {
 	render(){
 		return (
 		this.props.fontFamilies.map((fam,index) => 
-									<Card fontSize={this.props.fontSize}
+									<FontCard fontSize={this.props.fontSize}
 									fontFamily={fam.replace(/\+/g,' ')}
 									sampleText={this.props.sampleText}
 									key={index}

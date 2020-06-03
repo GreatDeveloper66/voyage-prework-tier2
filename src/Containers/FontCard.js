@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class Card extends React.Component {
+export default class FontCard extends React.Component {
   render() {
     return (<div className="card" style={{
         fontFamily: this.props.fontFamily

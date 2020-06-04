@@ -22,9 +22,9 @@ export default class Catalog extends React.Component {
       </div>
       <h1>Catalog</h1>
 
-      <div className="cardGrid">
+     
         <CardGrid fontFamilies={fontFamiliesFiltered(this.props.fontFamilies, this.props.filter, this.props.numCurrentDisplay)} fontSize={this.props.fontSize} sampleText={this.props.sampleText} addFontsChosen={this.props.addFontsChosen}/>
-      </div>
+      
       <button type="submit" onClick={this.props.handleSubmit} id="more">More</button>
     </div>);
   }

@@ -74,7 +74,7 @@ class App extends Component {
       fontSize: 15,
       importFontsChosen: "",
       standardFontsChosen: "",
-      importString: "",
+      importString: "fsdfsadfsdafds",
       standardString: ""
     });
   }
@@ -144,7 +144,7 @@ class App extends Component {
     <div id="fontsChosen">
       <div className="inputRow">
       <label style={{color: "white"}}>@import</label>
-      <input style={{color: "white"}} type="text" readOnly value={this.state.importString}></input>
+      <input type="text" readOnly value={this.state.importString}></input>
       </div>
       <div className="inputRow">
       <label style={{color: "white"}}>standard</label>

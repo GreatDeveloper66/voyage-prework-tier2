@@ -127,8 +127,8 @@ class App extends Component {
       <div className="appContainer">
       <div className="App">
       <div className="mainRow">
-        <div className="iconTitle">
-          Google Fonts
+        <div className="iconTitle" style={{color: "white"}}>
+          <h3>Google Fonts</h3>
         </div>
         
       </div>
@@ -143,11 +143,11 @@ class App extends Component {
     </div>
     <div id="fontsChosen">
       <div className="inputRow">
-      <label>@import</label>
-      <input type="text" readOnly value={this.state.importString}></input>
+      <label style={{color: "white"}}>@import</label>
+      <input style={{color: "white"}} type="text" readOnly value={this.state.importString}></input>
       </div>
       <div className="inputRow">
-      <label>standard</label>
+      <label style={{color: "white"}}>standard</label>
       <input type="text" readOnly value={this.state.standardString}></input>
       </div>
     </div>

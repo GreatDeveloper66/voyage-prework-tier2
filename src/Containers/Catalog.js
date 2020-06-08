@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import CardGrid from './CardGrid'
+import { FormControl, InputLabel, Input, FormHelperText } from '@material-ui/core';
 
 export default class Catalog extends React.Component {
   render() {
     return (<div className="Catalog">
-
       <div className="underMenu">
         <input type="search" placeholder="search fonts" onChange={this.props.handleFamilyChange} value={this.props.currentSearch}></input>
         <input type="search" placeholder="sample text" onChange={this.props.handleTextChange} value={this.props.currentCustomSample}></input>
-        <div className="instructions">
+        <div className="instructions" style={{color: "white"}}>
           Pick a font and choose a font size
         </div>
         <select name="fontSizes" onChange={this.props.handleFontChange} value={this.props.fontSize}>
@@ -20,7 +20,7 @@ export default class Catalog extends React.Component {
         </select>
         <button onClick={this.props.handleReset}>Reset</button>
       </div>
-      <h1>Catalog</h1>
+      <h1 style={{color: "blue"}}>Catalog</h1>
 
      
         <CardGrid fontFamilies={fontFamiliesFiltered(this.props.fontFamilies, this.props.filter, this.props.numCurrentDisplay)} fontSize={this.props.fontSize} sampleText={this.props.sampleText} addFontsChosen={this.props.addFontsChosen}/>
